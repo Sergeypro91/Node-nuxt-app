@@ -4,7 +4,7 @@
 
 html {
   font-size: $desktopFont;
-  line-height: 23px;
+  line-height: $desktopFont-lh;
 }
 
 body {
@@ -19,36 +19,42 @@ h1 {
 .h0 {
   font-family: $mainFontBold;
   font-size: $bbt;
+  line-height: $bbt_lh;
   color: $font-color_main_white-theme;
 }
 
 .h1 {
   font-family: $mainFontBold;
   font-size: $h1;
+  line-height: $h1_lh;
   color: $font-color_main_white-theme;
 }
 
 .h2 {
   font-family: $mainFontBold;
   font-size: $h2;
+  line-height: $h2_lh;
   color: $font-color_main_white-theme;
 }
 
 .p {
   font-family: $mainFontBold;
   font-size: $p;
+  line-height: $p_lh;
   color: $font-color_main_white-theme;
 }
 
 .p_small {
   font-family: $mainFontBold;
   font-size: $p_small;
+  line-height: $p_small_lh;
   color: $font-color_main_white-theme;
 }
 
 .p_extra-small {
   font-family: $mainFontBold;
   font-size: $p_extra-small;
+  line-height: $p_extra-small_lh;
   color: $font-color_main_white-theme;
 }
 
@@ -84,10 +90,115 @@ h1 {
 //Input
 .input {
   width: 100%;
+  position: relative;
   background: $input_white-theme;
-  font-size: $p;
-  color: $font-color_main-transparent_white-theme;
   border: 1px solid $stroke_white-theme;
-  padding: 0.888em;
-  border-radius: 1.277em;
+  border-radius: $border-rad;
+  transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+  .input__icon {
+    width: 46px;
+    height: 46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    img {
+      width: 18px;
+      height: 18px;
+    }
+  }
+  input,
+  textarea {
+    width: 100%;
+    padding: 12px 46px;
+    font-family: $mainFontRegular;
+    font-size: $p;
+    line-height: $p;
+    color: $font-color_main-transparent_white-theme;
+    cursor: pointer;
+  }
+}
+
+.imput_without-icon {
+  input {
+    padding: 12px 25px;
+  }
+  textarea {
+    width: 100%;
+    min-height: 217px;
+    height: 100%;
+    padding: 12px 25px;
+  }
+}
+
+.hover:hover {
+  border: 1px solid $accent-color;
+  box-shadow: 0 6px 28px -4px;
+  transition-delay: 0s;
+}
+
+.input_darck {
+  background: $input_black-theme;
+  color: $font-color_main-transparent_black-theme;
+  border: 1px solid $stroke_black-theme;
+  img {
+    filter: invert(0.9);
+  }
+  transition-delay: 0s;
+}
+
+//Button
+.btn {
+  position: relative;
+  display: inline-block;
+  border-radius: $border-rad;
+  border: 2px solid $font-color_main-transparent_white-theme;
+  color: $font-color_main-transparent_white-theme;
+  transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+  .btn__icon {
+    width: 46px;
+    height: 46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    img {
+      width: 18px;
+      height: 18px;
+    }
+  }
+  button {
+    padding: 14px 46px;
+    font-family: $mainFontBold;
+    font-size: $p;
+    line-height: $p;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+}
+
+.btn_primary {
+  background: $accent-color;
+  border: 1px solid $accent-color;
+  button {
+    color: $bg_white-theme;
+  }
+  img {
+    filter: invert(0.9);
+  }
+}
+
+.btn_full-width {
+  display: flex;
+  justify-content: center;
+  .btn__icon {
+    position: relative;
+  }
+  button {
+    padding: 14px 46px 14px 0px;
+  }
 }
