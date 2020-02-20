@@ -3,11 +3,19 @@ $mainFontRegular: 'Montserrat-Regular', Helvetica, Arial, sans-serif;
 $mainFontMedium: 'Montserrat-Medium', Helvetica, Arial, sans-serif;
 $mainFontBold: 'Montserrat-SemiBold', Helvetica, Arial, sans-serif;
 
+//Type font size
+$desktopFont: 18px;
+$smDesktopFont: 18px;
+$tabletFont: 18px;
+$smPhoneFont: 18px;
+
 // Size
-$mainFontColor: #101010;
-$mainFontSize: 18px;
-$mainFontWeight: 400;
-$mainLineHeight: 1.4;
+$bbt: 4rem;
+$h1: 2.555rem;
+$h2: 1.611rem;
+$p: 1rem;
+$p_small: 0.777rem;
+$p_extra-small: 0.666rem;
 
 $desktopWidth: 1280px;
 $smDesktopWidth: 980px;
@@ -15,24 +23,33 @@ $tableWidth: 768px;
 $phoneWidth: 480px;
 $smPhoneWidth: 320px;
 
-// Main color
-$default-color: #ffffff;
-$primary-color: #444ce0;
-$success-color: #26de81;
-$danger-color: #f54750;
-$warning-color: #fed330;
-$light-color: #999999;
-$purple-color: #8854d0;
-$error-color: #ff5252;
+$margin: 30px;
+$half-margin: call($margin / 2);
 
-// Neutral Color
-$neutral-primary: #303133;
-$neutral-regular: #606266;
-$neutral-secondary: #909399;
-$neutral-placeholder: #c0c4cc;
+// Main color white theme
+$bg_white-theme: #f7f7f7;
+$bg-transparent_white-theme: #f7f7f7cc;
+$font-color_main_white-theme: #333333;
+$font-color_main-transparent_white-theme: #33333380;
+$input_white-theme: #ffffff;
+$input-transparent-text_white-theme: #33333380;
+
+// Main color black theme
+$bg_black-theme: #000000;
+$bg_transparent-black-theme: #000000cc;
+$font-color_main_black-theme: #eeeeee;
+$font-color_main-transparent_black-theme: #eeeeeecc;
+$input_black-theme: #151515;
+$input-transparent-text_black-theme: #ffffff80;
+
+// Accent Color
+$accent-color: #444ce0;
+$priority-color: #fed330;
+$important-color: #f54750;
+$google-color: #4285f4;
+$facebook-color: #4267b2;
+$vk-color: #5b88bd;
 
 // Border Color
-$border-base: #dcdfe6;
-$border-light: #e4e7ed;
-$border-lighter: #ebeef5;
-$border-lightex: #f2f6fc;
+$stroke_white-theme: #dcdfe6;
+$stroke_black-theme: #505050;

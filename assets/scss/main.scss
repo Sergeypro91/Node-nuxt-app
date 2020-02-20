@@ -2,6 +2,92 @@
 @import 'utils/reset';
 @import 'common';
 
+html {
+  font-size: $desktopFont;
+  line-height: 23px;
+}
+
+body {
+  background: $bg_white-theme;
+}
+
 h1 {
   font-family: $mainFontBold;
+}
+
+//Font
+.h0 {
+  font-family: $mainFontBold;
+  font-size: $bbt;
+  color: $font-color_main_white-theme;
+}
+
+.h1 {
+  font-family: $mainFontBold;
+  font-size: $h1;
+  color: $font-color_main_white-theme;
+}
+
+.h2 {
+  font-family: $mainFontBold;
+  font-size: $h2;
+  color: $font-color_main_white-theme;
+}
+
+.p {
+  font-family: $mainFontBold;
+  font-size: $p;
+  color: $font-color_main_white-theme;
+}
+
+.p_small {
+  font-family: $mainFontBold;
+  font-size: $p_small;
+  color: $font-color_main_white-theme;
+}
+
+.p_extra-small {
+  font-family: $mainFontBold;
+  font-size: $p_extra-small;
+  color: $font-color_main_white-theme;
+}
+
+.font-color_wtt {
+  color: $font-color_main-transparent_white-theme;
+}
+
+//Font black
+.bg_bt {
+  color: $bg_black-theme;
+}
+
+.bg_btt {
+  color: $bg_transparent-black-theme;
+}
+
+.font-color_bt {
+  color: $font-color_main_black-theme;
+}
+
+.input_bt {
+  color: $input_black-theme;
+}
+
+.input-text_btt {
+  color: $input-transparent-text_black-theme;
+}
+
+.font-color_btt {
+  color: $font-color_main-transparent_black-theme;
+}
+
+//Input
+.input {
+  width: 100%;
+  background: $input_white-theme;
+  font-size: $p;
+  color: $font-color_main-transparent_white-theme;
+  border: 1px solid $stroke_white-theme;
+  padding: 0.888em;
+  border-radius: 1.277em;
 }

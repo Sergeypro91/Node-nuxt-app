@@ -1,35 +1,26 @@
 <template>
   <div class="container">
-    <div>
-      <logo />
-      <h1>
-        nodes-app
-      </h1>
-      <h2 class="subtitle">
-        Nodes for you and your friends
-      </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
+    <span class="h0">This is test</span>
+    <br />
+
+    <span class="h1">This is test</span>
+    <br />
+
+    <span class="h2">This is test</span>
+    <br />
+
+    <span class="p">This is test</span>
+    <br />
+
+    <span class="p_small">This is test</span>
+    <br />
+
+    <span class="p_extra-small">This is test</span>
+    <br />
+
+    <form action="" style="width: 300px">
+      <input class="input" type="text" placeholder="This is test" />
+    </form>
+    <br />
   </div>
 </template>
-
-<script>
-import Logo from '~/components/Logo.vue'
-
-export default {
-  components: {
-    Logo
-  }
-}
-</script>
