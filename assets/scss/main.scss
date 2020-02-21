@@ -191,7 +191,7 @@ footer {
 
 .hover:hover {
   border: 1px solid $accent-color;
-  box-shadow: 0 6px 28px -4px;
+  box-shadow: 0 6px 28px -4px $font-color_main-transparent_white-theme;
   transition-delay: 0s;
 }
 
@@ -251,10 +251,36 @@ footer {
 .btn_full-width {
   display: flex;
   justify-content: center;
+  margin-bottom: $half-margin;
   .btn__icon {
     display: none;
   }
   button {
-    padding: rem(12px) rem(46px) rem(12px) rem(0px);
+    padding: rem(12px) rem(46px);
   }
+}
+
+.btn_social-login {
+  width: 100%;
+  height: rem(46px);
+  display: flex;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+  .btn__icon {
+    position: relative;
+  }
+}
+
+.btn_google {
+  background: $google-color;
+}
+
+.btn_facebook {
+  background: $facebook-color;
+}
+
+.btn_vk {
+  background: $vk-color;
 }
