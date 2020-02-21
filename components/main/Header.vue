@@ -7,6 +7,20 @@
         <div class="header__logo-bg"></div>
       </a>
     </div>
-    <nav class="header__menu"></nav>
+    <nav class="header__menu">
+      <ul class="header__menu-ul">
+        <li class="header__menu-li">
+          <a href="#" class="header__menu-link header__menu-link_active"
+            >Notes</a
+          >
+        </li>
+        <li class="header__menu-li">
+          <a href="#" class="header__menu-link">Profile</a>
+        </li>
+        <li class="header__menu-li">
+          <a href="#" class="header__menu-link">Logout</a>
+        </li>
+      </ul>
+    </nav>
   </div>
 </template>
