@@ -1,22 +1,16 @@
 <template>
   <div class="container">
     <div class="h0">This is test</div>
-    <br />
 
     <div class="h1">This is test</div>
-    <br />
 
     <div class="h2">This is test</div>
-    <br />
 
     <div class="p">This is test</div>
-    <br />
 
     <div class="p_small">This is test</div>
-    <br />
 
     <div class="p_extra-small">This is test</div>
-    <br />
 
     <form action="" style="width: 300px">
       <div class="input hover">
@@ -32,9 +26,8 @@
         <textarea placeholder="This is test" />
       </div>
     </form>
-    <br />
 
-    <div class="btn btn_primary btn_full-width hover">
+    <div class="btn hover">
       <div class="btn__icon">
         <img src="~static/img/icon/login-icon.svg" alt="" />
       </div>

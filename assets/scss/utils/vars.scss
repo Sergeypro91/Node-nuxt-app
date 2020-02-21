@@ -4,31 +4,13 @@ $mainFontMedium: 'Montserrat-Medium', Helvetica, Arial, sans-serif;
 $mainFontBold: 'Montserrat-SemiBold', Helvetica, Arial, sans-serif;
 
 //Type font size
-$desktopFont: 18px;
-$desktopFont-lh: 24px;
+$defaultFZ: 18px;
 
-$smDesktopFont: 18px;
-$tabletFont: 18px;
-$smPhoneFont: 18px;
+@function rem($size) {
+  @return $size / $defaultFZ * 1rem;
+}
 
-// Size
-$bbt: 72px; // 72px
-$bbt-lh: 72px; // 72px
-
-$h1: 46px; // 46px
-$h1-lh: 48px; // 48px
-
-$h2: 29px; // 29px
-$h2-lh: 48px; // 48px
-
-$p: 18px; // 18px
-$p-lh: 24px; // 24px
-
-$p_small: 14px; // 14px
-$p_small-lh: 19px; // 19px
-
-$p_extra-small: 12px; // 12px
-$p_extra-small-lh: 16px; // 16px
+$desktopFont: ($defaultFZ / 16px) * 100%;
 
 $desktopWidth: 1280px;
 $smDesktopWidth: 980px;
@@ -37,7 +19,7 @@ $phoneWidth: 480px;
 $smPhoneWidth: 320px;
 
 $margin: 30px;
-$half-margin: call($margin / 2);
+$half-margin: $margin / 2;
 
 $border-rad: 23px;
 

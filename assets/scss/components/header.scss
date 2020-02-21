@@ -1,0 +1,32 @@
+.header__wrapper {
+  .header__logo {
+    a {
+      position: relative;
+      display: flex;
+      font-family: $mainFontMedium;
+      font-size: rem(46px);
+      color: $bg_white-theme;
+      cursor: pointer;
+      .header__logo-text_white {
+        width: rem(120px);
+        display: flex;
+        justify-content: center;
+      }
+      .header__logo-text_black {
+        padding-left: rem(3px);
+        color: $font-color_main_white-theme;
+      }
+      .header__logo-bg {
+        width: rem(120px);
+        height: rem(57px);
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: $font-color_main_white-theme;
+        z-index: -1;
+      }
+      // .header__menu {
+      // }
+    }
+  }
+}
