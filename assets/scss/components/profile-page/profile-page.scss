@@ -1,0 +1,10 @@
+.profile-page {
+  display: flex;
+  padding: $margin 0;
+  .user-profile {
+    flex: 1;
+  }
+  .user-charts {
+    flex: 2;
+  }
+}

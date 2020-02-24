@@ -18,6 +18,10 @@ $tableWidth: 768px;
 $phoneWidth: 480px;
 $smPhoneWidth: 320px;
 
+// Modules
+$header: 80px;
+$footer: 60px;
+
 $margin: 30px;
 $half-margin: $margin / 2;
 
@@ -28,6 +32,7 @@ $bg_white-theme: #f7f7f7;
 $bg-transparent_white-theme: #f7f7f7cc;
 $font-color_main_white-theme: #333333;
 $font-color_main-transparent_white-theme: #33333380;
+$font-color_main-transparent-to20_white-theme: #33333333;
 $input_white-theme: #ffffff;
 $input-transparent-text_white-theme: #33333380;
 

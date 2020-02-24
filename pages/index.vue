@@ -35,7 +35,7 @@
         </div>
 
         <div class="p_small login-form__text">
-          Login with one click from social. network:
+          Login with <b>ONE</b> click from social. network:
         </div>
         <div class="login-form__social-login">
           <div class="btn btn_social-login btn_google hover">
@@ -58,10 +58,12 @@
     </div>
 
     <div class="slogan-block">
-      <div class="h0">Notes app</div>
-      <div class="h1">notes for you and your friends</div>
-      <div class="h2">
+      <div class="h0 slogan-text">Notes app</div>
+      <div class="h1 slogan-text">notes for you and your friends</div>
+      <div class="h3 slogan-text">
         Quickly and conveniently create, edit and share your notes, and more...
+        This application is a test project and was created to learn new
+        technologies and upgrade existing skills.
       </div>
     </div>
   </div>

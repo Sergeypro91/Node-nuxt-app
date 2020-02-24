@@ -7,22 +7,29 @@ html {
   background: $bg_white-theme;
   color: $font-color_main_white-theme;
   height: 100%;
-  @media screen and (max-width: $desktopWidth) {
+}
+
+@media screen and (max-width: $desktopWidth) {
+  html {
     font-size: 18px;
   }
-  @media screen and (max-width: $tableWidth) {
-    font-size: 15px;
+}
+@media screen and (max-width: $tableWidth) {
+  // html {
+  //   font-size: 15px;
+  // }
+}
+@media screen and (max-width: $phoneWidth) {
+  // html {
+  //   font-size: 14px;
+  // }
+
+  .header__menu {
+    display: none;
   }
-  @media screen and (max-width: $phoneWidth) {
-    font-size: 14px;
 
-    .header__menu {
-      display: none;
-    }
-
-    .footer__copyright {
-      display: none !important;
-    }
+  .footer__copyright {
+    display: none !important;
   }
 }
 
@@ -30,6 +37,7 @@ html {
 .h0 {
   font-family: $mainFontBold;
   font-size: rem(76px);
+  font-weight: normal;
   line-height: rem(92px);
   margin-bottom: rem(46px);
 }
@@ -37,6 +45,7 @@ html {
 .h1 {
   font-family: $mainFontMedium;
   font-size: rem(47px);
+  font-weight: normal;
   line-height: rem(69px);
   margin-bottom: rem(23px);
 }
@@ -44,6 +53,7 @@ html {
 .h2 {
   font-family: $mainFontRegular;
   font-size: rem(29px);
+  font-weight: normal;
   line-height: rem(46px);
   margin-bottom: rem(23px);
 }
@@ -52,12 +62,14 @@ html {
   font-family: $mainFontRegular;
   font-size: rem(18px);
   line-height: rem(23px);
+  font-weight: normal;
   margin-bottom: rem(23px);
 }
 
 .p_small {
   font-family: $mainFontMedium;
   font-size: rem(14px);
+  font-weight: normal;
   line-height: rem(18px);
   margin-bottom: rem(18px);
 }
@@ -65,6 +77,7 @@ html {
 .p_extra-small {
   font-family: $mainFontRegular;
   font-size: rem(12px);
+  font-weight: normal;
   line-height: rem(16px);
   margin-bottom: rem(16px);
 }
@@ -121,7 +134,7 @@ html {
 
 header {
   width: 100%;
-  height: 80px;
+  height: $header;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -134,7 +147,7 @@ header {
 
 footer {
   width: 100%;
-  height: 60px;
+  height: $footer;
 }
 
 @media screen and (max-width: $tableWidth) {
@@ -173,7 +186,7 @@ footer {
     font-family: $mainFontRegular;
     font-size: rem(18px);
     line-height: rem(22px);
-    color: $font-color_main-transparent_white-theme;
+    color: $font-color_main_white-theme;
   }
 }
 
@@ -270,6 +283,10 @@ footer {
   transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
   .btn__icon {
     position: relative;
+    img {
+      width: 24px;
+      height: 24px;
+    }
   }
 }
 

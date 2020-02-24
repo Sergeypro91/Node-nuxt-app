@@ -1,5 +1,5 @@
 .login-page {
-  min-height: calc(100vh - 80px - 60px);
+  min-height: calc(100vh - #{$header} - #{$footer});
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -29,6 +29,10 @@
           }
         }
       }
+      .login-form__text {
+        text-align: center;
+        margin-bottom: 8px;
+      }
       .login-form__social-login {
         display: flex;
         .btn {
@@ -45,13 +49,42 @@
     flex-direction: column;
     align-items: flex-end;
     flex: 3;
+    padding-left: $margin;
     text-transform: uppercase;
-    .h0,
-    .h1,
-    .h2 {
+    .slogan-text {
       width: 100%;
       max-width: 500px;
       text-align: right;
+      font-family: $mainFontBold;
+    }
+  }
+}
+
+@media screen and (max-width: $desktopWidth) {
+}
+
+@media screen and (max-width: $tableWidth) {
+  .login-page {
+    .login-form {
+      flex: 3;
+    }
+  }
+}
+
+@media screen and (max-width: $phoneWidth) {
+  .login-page {
+    min-height: auto;
+    flex-direction: column-reverse;
+    .slogan-block {
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+      min-height: calc(100vh - #{$header});
+    }
+    .login-form {
+      justify-content: center;
+      align-items: center;
+      min-height: calc(100vh - #{$footer});
     }
   }
 }

@@ -1,0 +1,131 @@
+.user-profile {
+  min-height: calc(100vh - #{$header} - #{$footer} - #{$margin} * 2);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-right: $margin;
+}
+
+.user-profile__wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: $margin;
+}
+
+.user-profile__header {
+  display: flex;
+  margin-bottom: $margin;
+}
+
+.user-profile__img {
+  min-width: 100px;
+  img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+}
+
+.user-profile__descr {
+  margin-left: $half-margin;
+  .user-profile__name {
+    font-family: $mainFontMedium;
+    margin: 0;
+  }
+}
+
+.user-profile__body {
+  table {
+    width: 100%;
+    tr {
+      &:nth-child(2n) {
+        background: $font-color_main-transparent-to20_white-theme;
+      }
+      th {
+        padding: 5px;
+        &:first-child {
+          font-weight: 600;
+        }
+        &:nth-child(2n) {
+          padding-left: $half-margin;
+        }
+      }
+    }
+  }
+}
+
+.user-profile__friends {
+  height: 100%;
+}
+
+.user-profile__search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $half-margin;
+  .user-profile__search-input {
+    margin: 0;
+    margin-left: $half-margin;
+  }
+  .user-profile__search-title {
+    font-family: $mainFontMedium;
+    margin: 0;
+  }
+}
+
+.user-profile__list {
+  height: calc(
+    100vh - #{$header} - #{$footer} - #{$margin} * 2 - 229px - 30px - 47px - 15px -
+      47px - 15px
+  );
+  margin-bottom: $half-margin;
+  overflow-y: auto;
+  .user-profile__not-empty {
+    table {
+      width: 100%;
+      tr {
+        display: flex;
+        padding-bottom: $half-margin;
+        a {
+          display: flex;
+          align-items: center;
+          th {
+            overflow: hidden;
+            color: $font-color_main_white-theme;
+            margin: 0;
+            transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+            &:first-child {
+              width: 50px;
+              height: 50px;
+              border-radius: 50%;
+            }
+            &:nth-child(2n) {
+              padding-left: $half-margin;
+            }
+            img {
+              max-width: 100%;
+              transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+            }
+          }
+        }
+        &:hover {
+          a {
+            th {
+              color: $accent-color;
+              img {
+                transform: scale(1.5);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.user-profile__add-friends {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
