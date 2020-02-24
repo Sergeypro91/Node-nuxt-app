@@ -16,20 +16,22 @@
         <div class="user-profile__contacts">89538101379</div> -->
 
         <table>
-          <tr>
-            <th class="p">Registration date:</th>
-            <th class="p">14.02.2020</th>
-          </tr>
+          <tbody>
+            <tr>
+              <th class="p">Registration date:</th>
+              <th class="p">14.02.2020</th>
+            </tr>
 
-          <tr>
-            <th class="p">Notes count:</th>
-            <th class="p">143</th>
-          </tr>
+            <tr>
+              <th class="p">Notes count:</th>
+              <th class="p">143</th>
+            </tr>
 
-          <tr>
-            <th class="p">Contact:</th>
-            <th class="p">89538101379</th>
-          </tr>
+            <tr>
+              <th class="p">Contact:</th>
+              <th class="p">89538101379</th>
+            </tr>
+          </tbody>
         </table>
       </div>
     </div>
@@ -47,8 +49,8 @@
         <div class="user-profile__empty"></div>
         <div class="user-profile__not-empty">
           <table>
-            <tr>
-              <a href="#">
+            <tbody>
+              <tr>
                 <th>
                   <img
                     src="~static/img/users/user2.jpg"
@@ -57,11 +59,9 @@
                   />
                 </th>
                 <th class="p">Daria_Starykh</th>
-              </a>
-            </tr>
+              </tr>
 
-            <tr>
-              <a href="#">
+              <tr>
                 <th>
                   <img
                     src="~static/img/users/user2.jpg"
@@ -70,11 +70,9 @@
                   />
                 </th>
                 <th class="p">Daria_Starykh</th>
-              </a>
-            </tr>
+              </tr>
 
-            <tr>
-              <a href="#">
+              <tr>
                 <th>
                   <img
                     src="~static/img/users/user2.jpg"
@@ -83,11 +81,9 @@
                   />
                 </th>
                 <th class="p">Daria_Starykh</th>
-              </a>
-            </tr>
+              </tr>
 
-            <tr>
-              <a href="#">
+              <tr>
                 <th>
                   <img
                     src="~static/img/users/user2.jpg"
@@ -96,11 +92,9 @@
                   />
                 </th>
                 <th class="p">Daria_Starykh</th>
-              </a>
-            </tr>
+              </tr>
 
-            <tr>
-              <a href="#">
+              <tr>
                 <th>
                   <img
                     src="~static/img/users/user2.jpg"
@@ -109,11 +103,9 @@
                   />
                 </th>
                 <th class="p">Daria_Starykh</th>
-              </a>
-            </tr>
+              </tr>
 
-            <tr>
-              <a href="#">
+              <tr>
                 <th>
                   <img
                     src="~static/img/users/user2.jpg"
@@ -122,11 +114,9 @@
                   />
                 </th>
                 <th class="p">Daria_Starykh</th>
-              </a>
-            </tr>
+              </tr>
 
-            <tr>
-              <a href="#">
+              <tr>
                 <th>
                   <img
                     src="~static/img/users/user2.jpg"
@@ -135,11 +125,9 @@
                   />
                 </th>
                 <th class="p">Daria_Starykh</th>
-              </a>
-            </tr>
+              </tr>
 
-            <tr>
-              <a href="#">
+              <tr>
                 <th>
                   <img
                     src="~static/img/users/user2.jpg"
@@ -148,11 +136,9 @@
                   />
                 </th>
                 <th class="p">Daria_Starykh</th>
-              </a>
-            </tr>
+              </tr>
 
-            <tr>
-              <a href="#">
+              <tr>
                 <th>
                   <img
                     src="~static/img/users/user2.jpg"
@@ -161,11 +147,9 @@
                   />
                 </th>
                 <th class="p">Daria_Starykh</th>
-              </a>
-            </tr>
+              </tr>
 
-            <tr>
-              <a href="#">
+              <tr>
                 <th>
                   <img
                     src="~static/img/users/user2.jpg"
@@ -174,11 +158,9 @@
                   />
                 </th>
                 <th class="p">Daria_Starykh</th>
-              </a>
-            </tr>
+              </tr>
 
-            <tr>
-              <a href="#">
+              <tr>
                 <th>
                   <img
                     src="~static/img/users/user2.jpg"
@@ -187,11 +169,9 @@
                   />
                 </th>
                 <th class="p">Daria_Starykh</th>
-              </a>
-            </tr>
+              </tr>
 
-            <tr>
-              <a href="#">
+              <tr>
                 <th>
                   <img
                     src="~static/img/users/user2.jpg"
@@ -200,11 +180,9 @@
                   />
                 </th>
                 <th class="p">Daria_Starykh</th>
-              </a>
-            </tr>
+              </tr>
 
-            <tr>
-              <a href="#">
+              <tr>
                 <th>
                   <img
                     src="~static/img/users/user2.jpg"
@@ -213,11 +191,9 @@
                   />
                 </th>
                 <th class="p">Daria_Starykh</th>
-              </a>
-            </tr>
+              </tr>
 
-            <tr>
-              <a href="#">
+              <tr>
                 <th>
                   <img
                     src="~static/img/users/user2.jpg"
@@ -226,8 +202,8 @@
                   />
                 </th>
                 <th class="p">Daria_Starykh</th>
-              </a>
-            </tr>
+              </tr>
+            </tbody>
           </table>
         </div>
       </div>
