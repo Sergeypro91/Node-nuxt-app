@@ -1,22 +1,28 @@
 <template>
   <div class="user-charts">
-    <canvas ref="canvas"> </canvas>
+    <div class="doughnut">
+      <chart-doughnut :chart-data="datadoughnut"></chart-doughnut>
+    </div>
+
+    <div class="line">
+      <chart-line :chart-data="dataline"></chart-line>
+    </div>
   </div>
 </template>
 
 <script>
-import { Doughnut } from 'vue-chartjs'
+import ChartDoughnut from './ChartDoughnut.vue'
+import ChartLine from './ChartLine.vue'
 
 export default {
-  extends: Doughnut,
-
-  mounted() {
-    this.setup()
+  components: {
+    ChartDoughnut,
+    ChartLine
   },
 
-  methods: {
-    setup() {
-      this.renderChart({
+  data() {
+    return {
+      datadoughnut: {
         labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
         datasets: [
           {
@@ -42,8 +48,31 @@ export default {
             borderWidth: 1
           }
         ]
-      })
+      },
+
+      dataline: {
+        labels: ['First', 'Second'],
+        datasets: [
+          {
+            label: 'Data One',
+            backgroundColor: '#f87979',
+            data: [15, 20]
+          },
+          {
+            label: 'Data One',
+            backgroundColor: '#f87979',
+            data: [35, 47]
+          }
+        ]
+      }
     }
   }
 }
 </script>
+
+<style lang="scss">
+.doughnut {
+  width: 100%;
+  max-width: 500px;
+}
+</style>
