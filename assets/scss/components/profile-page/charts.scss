@@ -1,0 +1,21 @@
+.user-charts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.doughnut {
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+  .chartjs-render-monitor {
+    width: 100% !important;
+    height: auto !important;
+  }
+}
+
+@media screen and (max-width: $tableWidth) {
+  .user-charts {
+    display: none;
+  }
+}

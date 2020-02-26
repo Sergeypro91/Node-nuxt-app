@@ -1,23 +1,20 @@
 <template>
   <div class="user-charts">
     <div class="doughnut">
-      <chart-doughnut :chart-data="datadoughnut"></chart-doughnut>
-    </div>
-
-    <div class="line">
-      <chart-line :chart-data="dataline"></chart-line>
+      <chart-doughnut
+        :chart-data="datadoughnut"
+        :options="options"
+      ></chart-doughnut>
     </div>
   </div>
 </template>
 
 <script>
-import ChartDoughnut from './ChartDoughnut.vue'
-import ChartLine from './ChartLine.vue'
+import ChartDoughnut from '~/components/profile-page/charts/ChartDoughnut.vue'
 
 export default {
   components: {
-    ChartDoughnut,
-    ChartLine
+    ChartDoughnut
   },
 
   data() {
@@ -50,29 +47,15 @@ export default {
         ]
       },
 
-      dataline: {
-        labels: ['First', 'Second'],
-        datasets: [
-          {
-            label: 'Data One',
-            backgroundColor: '#f87979',
-            data: [15, 20]
-          },
-          {
-            label: 'Data One',
-            backgroundColor: '#f87979',
-            data: [35, 47]
+      options: {
+        legend: {
+          position: 'right',
+          labels: {
+            padding: 15
           }
-        ]
+        }
       }
     }
   }
 }
 </script>
-
-<style lang="scss">
-.doughnut {
-  width: 100%;
-  max-width: 500px;
-}
-</style>

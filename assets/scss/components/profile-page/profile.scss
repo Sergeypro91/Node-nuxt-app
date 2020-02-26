@@ -8,7 +8,6 @@
 
 .user-profile__wrapper {
   display: flex;
-  flex-direction: column;
   margin-bottom: $margin;
 }
 
@@ -100,6 +99,7 @@
             border-radius: 50%;
           }
           &:nth-child(2n) {
+            font-family: $mainFontMedium;
             padding-left: $half-margin;
           }
           img {
@@ -124,4 +124,48 @@
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+@media screen and (max-width: $desktopWidth) {
+  .user-profile__chart {
+    display: none;
+  }
+}
+
+@media screen and (max-width: $tableWidth) {
+  .user-profile {
+    padding: 0;
+  }
+  .user-profile__chart {
+    display: block;
+    width: 100%;
+    padding-left: $margin;
+  }
+
+  .user-profile__list {
+    height: auto;
+  }
+
+  .user-profile__list {
+    .user-profile__not-empty {
+      tbody {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $phoneWidth) {
+  .user-profile__wrapper {
+    flex-direction: column;
+  }
+
+  .user-profile__list {
+    .user-profile__not-empty {
+      tbody {
+        display: grid;
+      }
+    }
+  }
 }
