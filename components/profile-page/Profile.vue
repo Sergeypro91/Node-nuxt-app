@@ -4,7 +4,7 @@
       <div class="user-profile__data">
         <div class="user-profile__header">
           <div class="user-profile__img">
-            <img src="~static/img/users/user1.jpg" alt="" />
+            <img src="~/static/img/users/user1.jpg" alt="" />
           </div>
           <div class="user-profile__descr">
             <div class="h2 user-profile__name">Sergeyprostoas</div>

@@ -246,7 +246,6 @@ footer {
   display: inline-block;
   border-radius: $border-rad;
   border: 2px solid $font-color_main-transparent_white-theme;
-  color: $font-color_main-transparent_white-theme;
   transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
   .btn__icon {
     width: rem(46px);
@@ -257,19 +256,34 @@ footer {
     position: absolute;
     top: 0px;
     left: 0px;
-    img {
-      width: 18px;
-      height: 18px;
-    }
   }
   button {
     width: 100%;
+    color: $font-color_main-transparent_white-theme;
     padding: rem(12px) rem(46px);
     font-family: $mainFontBold;
     font-size: rem(18px);
     line-height: rem(22px);
     text-transform: uppercase;
     cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+  }
+}
+
+.btn_gray {
+  svg {
+    fill: $font-color_main-transparent_white-theme;
+  }
+  &:hover {
+    border-color: $accent-color;
+    button {
+      color: $accent-color;
+    }
+    svg {
+      width: 24px;
+      height: 24px;
+      fill: $accent-color;
+    }
   }
 }
 
@@ -278,9 +292,6 @@ footer {
   border: 1px solid $accent-color;
   button {
     color: $bg_white-theme;
-  }
-  img {
-    filter: invert(1);
   }
 }
 
@@ -306,10 +317,6 @@ footer {
   transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
   .btn__icon {
     position: relative;
-    img {
-      width: 24px;
-      height: 24px;
-    }
   }
 }
 

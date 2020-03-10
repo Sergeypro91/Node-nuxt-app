@@ -31,8 +31,16 @@
         </div>
       </div>
       <div class="note__footer">
-        <div class="note__auhtor"></div>
-        <div class="btn">
+        <div class="note__auhtor">
+          <div class="note__auhtor-img">
+            <img src="~/static/img/users/user1.jpg" alt="" />
+          </div>
+          <div class="note__auhtor-info">
+            <div class="p_small">Sergeyprostoas</div>
+            <div class="p_small">14.02.2020 23:31</div>
+          </div>
+        </div>
+        <div class="btn btn_gray">
           <div class="btn__icon">
             <svg
               class="icon"
