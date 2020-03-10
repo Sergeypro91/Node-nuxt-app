@@ -43,6 +43,9 @@ module.exports = {
     '@nuxtjs/axios',
     '@nuxtjs/pwa'
   ],
+  router: {
+    linkActiveClass: 'header__menu-link_active'
+  },
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options

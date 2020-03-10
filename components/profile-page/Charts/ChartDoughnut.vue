@@ -6,6 +6,7 @@ const { reactiveProp } = mixins
 export default {
   extends: Doughnut,
   mixins: [reactiveProp],
+  // eslint-disable-next-line
   props: ['options'],
 
   mounted() {

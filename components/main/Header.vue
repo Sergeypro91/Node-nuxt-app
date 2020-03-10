@@ -1,24 +1,22 @@
 <template>
   <div class="header__wrapper">
     <div class="header__logo">
-      <a href="#">
+      <n-link to="/">
         <div class="header__logo-text header__logo-text_white">Note</div>
         <div class="header__logo-text header__logo-text_black">s</div>
         <div class="header__logo-bg"></div>
-      </a>
+      </n-link>
     </div>
     <nav class="header__menu">
       <ul class="header__menu-ul">
         <li class="header__menu-li">
-          <a href="#" class="header__menu-link header__menu-link_active"
-            >Notes</a
-          >
+          <n-link to="/notes" class="header__menu-link">Notes</n-link>
         </li>
         <li class="header__menu-li">
-          <a href="#" class="header__menu-link">Profile</a>
+          <n-link to="/profile" class="header__menu-link">Profile</n-link>
         </li>
         <li class="header__menu-li">
-          <a href="#" class="header__menu-link">Logout</a>
+          <n-link to="/" exact class="header__menu-link">Logout</n-link>
         </li>
       </ul>
     </nav>

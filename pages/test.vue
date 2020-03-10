@@ -27,9 +27,9 @@
       </div>
     </form>
 
-    <div class="btn hover">
+    <div class="btn btn_primary hover">
       <div class="btn__icon">
-        <img src="~static/img/icon/login-icon.svg" alt="" />
+        <img src="~/static/img/icon/plus-icon.svg" alt="" />
       </div>
       <button>Login</button>
     </div>
