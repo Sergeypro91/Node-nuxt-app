@@ -156,6 +156,24 @@ footer {
   }
 }
 
+.icon {
+  width: 18px;
+  height: 18px;
+  fill: $font-color_main_white-theme;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+  &.icon_white {
+    fill: $input_white-theme;
+  }
+  &.icon_big {
+    width: 24px;
+    height: 24px;
+  }
+  &.icon_hover:hover {
+    fill: $accent-color;
+  }
+}
+
 //Input
 .input {
   width: 100%;
@@ -206,6 +224,11 @@ footer {
   border: 1px solid $accent-color;
   box-shadow: 0 6px 28px -4px $font-color_main-transparent_white-theme;
   transition-delay: 0s;
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
 }
 
 .input_darck {

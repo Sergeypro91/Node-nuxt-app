@@ -1,0 +1,19 @@
+.search-notes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $margin;
+}
+
+.search-notes__header {
+  .h1 {
+    line-height: normal;
+    margin: 0;
+  }
+}
+
+.search-notes__input {
+  .input {
+    margin: 0;
+  }
+}
