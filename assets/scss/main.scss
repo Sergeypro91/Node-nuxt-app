@@ -222,7 +222,7 @@ footer {
 
 .hover:hover {
   border: 1px solid $accent-color;
-  box-shadow: 0 6px 28px -4px $font-color_main-transparent_white-theme;
+  box-shadow: 0 6px 28px -4px #0000001f;
   transition-delay: 0s;
 
   svg {

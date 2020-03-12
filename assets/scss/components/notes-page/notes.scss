@@ -1,3 +1,125 @@
 .notes {
+  width: 100%;
   display: flex;
+  flex-flow: column wrap;
+  margin-bottom: $margin;
+  &:before,
+  &:after {
+    content: '';
+    flex-basis: 100%;
+    width: 0;
+    order: 2;
+  }
+}
+
+.note {
+  width: calc((100% - #{$margin}) / 3);
+  min-width: 290px;
+  display: inline-block;
+  padding: $half-margin;
+  margin: 0 $half-margin $half-margin 0;
+  background: $input_white-theme;
+  border-radius: 5px;
+  transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+  &:hover {
+    box-shadow: 0 30px 30px #0000000a;
+    transform: translate(0, -6px);
+  }
+  &:nth-child(3n + 1) {
+    order: 1;
+  }
+  &:nth-child(3n + 2) {
+    order: 2;
+  }
+  &:nth-child(3n) {
+    order: 3;
+    margin-right: 0;
+  }
+}
+
+.note__header {
+  display: flex;
+}
+
+.note__title {
+  .h2 {
+    line-height: normal;
+    font-family: $mainFontMedium;
+  }
+}
+
+.note__type-change {
+  display: flex;
+  align-self: start;
+  align-items: center;
+}
+
+.note__type-change_standart,
+.note__type-change_priority,
+.note__type-change_important {
+  width: 15px;
+  height: 15px;
+  margin-left: 15px;
+  background: $input_white-theme;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+  &:hover {
+    transform: scale(1.5);
+  }
+}
+
+.note__type-change_priority {
+  background: $priority-color;
+}
+
+.note__type-change_important {
+  background: $important-color;
+}
+
+.note__close {
+  display: flex;
+  margin-left: 10px;
+  transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+  &:hover {
+    transform: scale(1.5);
+  }
+  svg {
+    width: 24px;
+    height: 24px;
+    transform: rotate(45deg);
+  }
+}
+
+.note__footer {
+  display: flex;
+  justify-content: space-between;
+  .btn {
+    align-self: start;
+  }
+}
+
+.note__auhtor {
+  display: flex;
+}
+
+.note__auhtor-img {
+  img {
+    width: 46px;
+    height: 46px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+}
+
+.note__auhtor-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 8px;
+  .p,
+  .p_extra-small {
+    margin: 0;
+    color: $font-color_main-transparent_white-theme;
+  }
 }
