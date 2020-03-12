@@ -172,6 +172,10 @@ footer {
   &.icon_hover:hover {
     fill: $accent-color;
   }
+  &.icon_logo {
+    width: 36px;
+    height: 36px;
+  }
 }
 
 //Input
