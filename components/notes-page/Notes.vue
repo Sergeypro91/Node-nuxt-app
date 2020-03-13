@@ -1,5 +1,5 @@
 <template>
-  <div ref="notes" class="notes" :style="{ height: notesBlockHeight + 'px' }">
+  <div ref="notes" class="notes" :style="{ height: notesHeight + 'px' }">
     <div v-for="note in notes" :key="note.idNote" ref="note" class="note">
       <div class="note__header">
         <div class="note__title">
@@ -52,7 +52,6 @@
               />
             </svg>
           </div>
-          <button>Edit</button>
         </div>
       </div>
     </div>
@@ -63,7 +62,7 @@
 export default {
   data() {
     return {
-      notesBlockHeight: 0,
+      notesHeight: null,
       notes: [
         {
           title: 'Some note title for test notes respons',
@@ -135,34 +134,61 @@ export default {
   },
 
   mounted() {
+    window.addEventListener('resize', this.matchHeight)
     this.matchHeight()
+  },
+
+  destroyed() {
+    window.removeEventListener('resize', this.matchHeight)
   },
 
   methods: {
     matchHeight() {
       const numberOfNotes = this.$refs.note.length
       const margin = 15
+      const BPTwoColl = 1024
+      // const BPOneColl = 768
       const notesBlockHeight = []
 
-      for (let j = 0; j < 3; j += 1) {
-        let notesColumnHeight = 0
-        let notesColumnCount = 0
+      if (window.innerWidth > BPTwoColl) {
+        for (let j = 0; j < 3; j += 1) {
+          let notesColumnHeight = 0
+          let notesColumnCount = 0
 
-        for (let i = j; i < numberOfNotes; i += 3) {
-          notesColumnHeight += this.$refs.note[i].clientHeight
-          notesColumnCount += 1
+          for (let i = j; i < numberOfNotes; i += 3) {
+            notesColumnHeight += this.$refs.note[i].clientHeight
+            notesColumnCount += 1
+          }
+
+          notesBlockHeight.push(notesColumnHeight + margin * notesColumnCount)
         }
 
-        notesBlockHeight.push(notesColumnHeight + margin * notesColumnCount)
+        console.log('Before BP')
+      }
+
+      if (window.innerWidth <= BPTwoColl) {
+        for (let j = 0; j < 2; j += 1) {
+          let notesColumnHeight = 0
+          let notesColumnCount = 0
+
+          for (let i = j; i < numberOfNotes; i += 2) {
+            notesColumnHeight += this.$refs.note[i].clientHeight
+            notesColumnCount += 1
+          }
+
+          notesBlockHeight.push(notesColumnHeight + margin * notesColumnCount)
+        }
+
+        console.log('After BP')
       }
 
       const ansver = (numArray) => {
         return Math.max.apply(null, numArray)
       }
 
-      this.notesBlockHeight = ansver(notesBlockHeight)
+      this.notesHeight = ansver(notesBlockHeight)
 
-      console.log(this.notesBlockHeight)
+      console.log(window.innerWidth)
     }
   }
 }
