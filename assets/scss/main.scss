@@ -243,6 +243,7 @@ footer {
   border-radius: $border-rad;
   border: 2px solid $font-color_main-transparent_white-theme;
   transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+  cursor: pointer;
   .btn__icon {
     width: rem(46px);
     height: rem(46px);
@@ -261,8 +262,8 @@ footer {
     font-size: rem(18px);
     line-height: rem(22px);
     text-transform: uppercase;
-    cursor: pointer;
     transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+    cursor: pointer;
   }
 }
 
@@ -316,7 +317,6 @@ footer {
   display: flex;
   justify-content: center;
   border: none;
-  cursor: pointer;
   transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
   .btn__icon {
     position: relative;

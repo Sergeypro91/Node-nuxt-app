@@ -20,7 +20,9 @@
 
 .search-notes__filter {
   display: flex;
-  margin-left: $half-margin;
+  svg {
+    margin-left: $half-margin;
+  }
 }
 
 @media screen and (max-width: 767px) {
