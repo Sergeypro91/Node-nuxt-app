@@ -23,14 +23,6 @@ html {
   // html {
   //   font-size: 14px;
   // }
-
-  .header__menu {
-    display: none;
-  }
-
-  .footer__copyright {
-    display: none !important;
-  }
 }
 
 //Font
@@ -275,8 +267,10 @@ footer {
 }
 
 .btn_gray {
-  svg {
-    fill: $font-color_main-transparent_white-theme;
+  .btn__icon {
+    svg {
+      fill: $font-color_main-transparent_white-theme;
+    }
   }
   &:hover {
     border-color: $accent-color;

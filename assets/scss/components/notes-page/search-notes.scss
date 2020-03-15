@@ -17,3 +17,14 @@
     margin: 0;
   }
 }
+
+.search-notes__filter {
+  display: flex;
+  margin-left: $half-margin;
+}
+
+@media screen and (max-width: 767px) {
+  .search-notes__header {
+    display: none;
+  }
+}

@@ -2,7 +2,6 @@
   width: 100%;
   display: flex;
   flex-flow: column wrap;
-  margin-bottom: $margin;
   &:before,
   &:after {
     content: '';
@@ -28,6 +27,7 @@
 
 .note__header {
   display: flex;
+  justify-content: space-between;
 }
 
 .note__title {
@@ -129,14 +129,24 @@
   }
 }
 
-@media screen and (max-width: 1024px) {
+@media (min-width: $tableWidth) and (max-width: 1024px) {
   .note {
-    width: calc((100% - 30px) / 2);
+    width: calc((100% - #{$half-margin}) / 2);
     &:nth-child(2n + 1) {
       order: 1;
     }
     &:nth-child(2n + 2) {
       order: 2;
+      margin-right: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .note {
+    width: 100%;
+    &:nth-child(n) {
+      order: 1;
       margin-right: 0;
     }
   }

@@ -63,6 +63,7 @@ export default {
   data() {
     return {
       notesHeight: null,
+      notesWidth: 0,
       notes: [
         {
           title: 'Some note title for test notes respons',
@@ -144,51 +145,41 @@ export default {
 
   methods: {
     matchHeight() {
-      const numberOfNotes = this.$refs.note.length
       const margin = 15
       const BPTwoColl = 1024
-      // const BPOneColl = 768
-      const notesBlockHeight = []
+      const BPOneColl = 768
+      const notesHeightArr = []
+
+      for (let i = 0; i < this.$refs.note.length; i += 1) {
+        notesHeightArr.push(this.$refs.note[i].clientHeight)
+      }
+
+      const bigestCollHeight = (CollCount, numb) => {
+        const newArr = []
+
+        for (let i = 0; i < CollCount; i += 1) {
+          newArr.push(
+            notesHeightArr
+              .filter((value, index, Arr) => {
+                return index % CollCount === i
+              })
+              .reduce((a, b) => a + b + numb, 0)
+          )
+        }
+
+        return Math.max.apply(null, newArr)
+      }
 
       if (window.innerWidth > BPTwoColl) {
-        for (let j = 0; j < 3; j += 1) {
-          let notesColumnHeight = 0
-          let notesColumnCount = 0
-
-          for (let i = j; i < numberOfNotes; i += 3) {
-            notesColumnHeight += this.$refs.note[i].clientHeight
-            notesColumnCount += 1
-          }
-
-          notesBlockHeight.push(notesColumnHeight + margin * notesColumnCount)
-        }
-
-        console.log('Before BP')
+        this.notesHeight = bigestCollHeight(3, margin)
+      } else if (
+        window.innerWidth <= BPTwoColl &&
+        !(window.innerWidth < BPOneColl)
+      ) {
+        this.notesHeight = bigestCollHeight(2, margin)
+      } else {
+        this.notesHeight = bigestCollHeight(1, margin)
       }
-
-      if (window.innerWidth <= BPTwoColl) {
-        for (let j = 0; j < 2; j += 1) {
-          let notesColumnHeight = 0
-          let notesColumnCount = 0
-
-          for (let i = j; i < numberOfNotes; i += 2) {
-            notesColumnHeight += this.$refs.note[i].clientHeight
-            notesColumnCount += 1
-          }
-
-          notesBlockHeight.push(notesColumnHeight + margin * notesColumnCount)
-        }
-
-        console.log('After BP')
-      }
-
-      const ansver = (numArray) => {
-        return Math.max.apply(null, numArray)
-      }
-
-      this.notesHeight = ansver(notesBlockHeight)
-
-      console.log(window.innerWidth)
     }
   }
 }

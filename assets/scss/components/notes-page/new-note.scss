@@ -1,5 +1,10 @@
 .new-note {
   margin: $margin 0;
+  transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+}
+
+.new-note__headline {
+  display: none;
 }
 
 .new-note__header {
@@ -99,5 +104,99 @@
   flex-direction: column;
   .btn {
     align-self: center;
+  }
+}
+
+.new-note__ui {
+  display: flex;
+  justify-content: center;
+  .btn:nth-child(2n) {
+    display: none;
+  }
+}
+
+.nno {
+  display: none;
+}
+
+@media screen and (max-width: 767px) {
+  .new-note {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 100%;
+    top: 0;
+    background: $bg_white-theme;
+    margin: 0;
+    padding: 0 $half-margin;
+    z-index: 998;
+    .new-note__headline {
+      display: block;
+      margin-bottom: $margin;
+      .h1 {
+        font-family: $mainFontBold;
+        text-align: center;
+        margin-bottom: 0;
+      }
+    }
+    .new-note__header {
+      flex-direction: column;
+      .new-note__type {
+        margin-top: $half-margin;
+        .new-note__type-child {
+          [type='radio']:not(:checked) + span,
+          [type='radio']:checked + span {
+            padding: 0;
+          }
+          &:first-child {
+            margin-left: 0;
+          }
+          &:nth-child(3n + 2) {
+            [type='radio']:not(:checked) + span:before {
+              background: $priority-color;
+            }
+          }
+          &:nth-child(3n) {
+            [type='radio']:not(:checked) + span:before {
+              background: $important-color;
+            }
+          }
+          label {
+            span {
+              min-width: 20px;
+              min-height: 20px;
+              .p {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .new-note__ui {
+    display: flex;
+    justify-content: space-between;
+    .btn:nth-child(2n) {
+      display: block;
+      svg {
+        width: 24px;
+        height: 24px;
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  .nno {
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    position: fixed;
+    left: 0;
+    bottom: 80px;
   }
 }

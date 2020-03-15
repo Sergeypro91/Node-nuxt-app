@@ -31,7 +31,7 @@
       </svg>
       <div class="footer__copyright">
         <div class="p_small">All rights reserved.</div>
-        <div class="p_small">© 2020, Sergey shevtsov</div>
+        <div class="p_small">© 2020, Sergey Shevtsov</div>
       </div>
     </div>
     <div class="footer__contact-me">

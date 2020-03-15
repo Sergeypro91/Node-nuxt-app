@@ -54,3 +54,9 @@
     margin-left: $half-margin;
   }
 }
+
+@media screen and (max-width: $phoneWidth) {
+  .footer__copyright {
+    display: none !important;
+  }
+}
