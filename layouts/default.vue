@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper" :class="{ fixed2: laypurFix }">
+  <div class="wrapper" :class="{ fixed: layoutFix }">
     <header>
       <Header />
     </header>
@@ -22,7 +22,7 @@ export default {
   data() {
     return {
       top: 0,
-      laypurFix: false
+      layoutFix: false
     }
   },
 
@@ -38,12 +38,30 @@ export default {
     scrollDown() {
       const top = window.pageYOffset
 
-      if (top >= this.top) {
-        this.top = top
-        this.laypurFix = false
-      } else {
-        this.top = top
-        this.laypurFix = true
+      if (window.innerWidth > 767) {
+        if (document.documentElement.scrollTop > 468) {
+          if (top >= this.top) {
+            this.top = top
+            this.layoutFix = false
+          } else {
+            this.top = top
+            this.layoutFix = true
+          }
+        } else {
+          this.layoutFix = false
+        }
+      } else if (window.innerWidth <= 767) {
+        if (document.documentElement.scrollTop > 80) {
+          if (top >= this.top) {
+            this.top = top
+            this.layoutFix = false
+          } else {
+            this.top = top
+            this.layoutFix = true
+          }
+        } else {
+          this.layoutFix = false
+        }
       }
     }
   }

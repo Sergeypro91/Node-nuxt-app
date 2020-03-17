@@ -14,10 +14,12 @@
         width: rem(120px);
         display: flex;
         justify-content: center;
+        transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
       }
       .header__logo-text_black {
         padding-left: rem(3px);
         color: $font-color_main_white-theme;
+        transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
       }
       .header__logo-bg {
         width: rem(120px);
@@ -27,6 +29,18 @@
         left: 0;
         background: $font-color_main_white-theme;
         z-index: -1;
+        transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+      }
+    }
+    &:hover {
+      .header__logo-text_white {
+        color: $font-color_main_white-theme;
+      }
+      .header__logo-text_black {
+        padding-left: 0;
+      }
+      .header__logo-bg {
+        width: 0;
       }
     }
   }
@@ -74,7 +88,7 @@
 }
 
 @media screen and (max-width: $phoneWidth) {
-  .fixed2 {
+  .fixed {
     .header__menu {
       bottom: 0px;
     }

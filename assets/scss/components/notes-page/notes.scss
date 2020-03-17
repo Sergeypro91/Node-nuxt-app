@@ -1,4 +1,4 @@
-.fixed2 {
+.fixed {
   .notes {
     margin-top: calc(#{$margin} + 57px + #{$margin});
   }
@@ -8,6 +8,7 @@
   width: 100%;
   display: flex;
   flex-flow: column wrap;
+  margin-bottom: $margin;
   &:before,
   &:after {
     content: '';
@@ -149,16 +150,22 @@
 }
 
 @media screen and (max-width: 767px) {
-  .fixed2 {
+  .fixed {
     .notes {
-      margin-top: calc(#{$half-margin} + #{$margin} + 47px);
+      margin-top: calc(#{$half-margin} * 2 + 47px);
     }
+  }
+  .notes {
+    transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
   }
   .note {
     width: 100%;
     &:nth-child(n) {
       order: 1;
       margin-right: 0;
+    }
+    &:last-child {
+      margin-bottom: $margin;
     }
   }
 }

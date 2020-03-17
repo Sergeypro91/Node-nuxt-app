@@ -193,10 +193,19 @@
 
   .nno {
     display: flex;
+    opacity: 1;
     width: 100vw;
     justify-content: center;
     position: fixed;
     left: 0;
-    bottom: 80px;
+    bottom: 60px;
+    transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+  }
+
+  .fixed {
+    .nno {
+      opacity: 0;
+      bottom: 80px;
+    }
   }
 }
