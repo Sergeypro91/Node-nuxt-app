@@ -1,3 +1,9 @@
+.fixed2 {
+  .notes {
+    margin-top: calc(#{$margin} + 57px + #{$margin});
+  }
+}
+
 .notes {
   width: 100%;
   display: flex;
@@ -143,6 +149,11 @@
 }
 
 @media screen and (max-width: 767px) {
+  .fixed2 {
+    .notes {
+      margin-top: calc(#{$half-margin} + #{$margin} + 47px);
+    }
+  }
   .note {
     width: 100%;
     &:nth-child(n) {

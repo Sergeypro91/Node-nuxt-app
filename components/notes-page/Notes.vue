@@ -150,9 +150,9 @@ export default {
       const BPOneColl = 768
       const notesHeightArr = []
 
-      for (let i = 0; i < this.$refs.note.length; i += 1) {
+      this.$refs.note.forEach((item, i, arr) => {
         notesHeightArr.push(this.$refs.note[i].clientHeight)
-      }
+      })
 
       const bigestCollHeight = (CollCount, numb) => {
         const newArr = []
@@ -178,7 +178,7 @@ export default {
       ) {
         this.notesHeight = bigestCollHeight(2, margin)
       } else {
-        this.notesHeight = bigestCollHeight(1, margin)
+        this.notesHeight = null
       }
     }
   }

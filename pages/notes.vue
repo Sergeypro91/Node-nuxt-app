@@ -1,5 +1,5 @@
 <template>
-  <div class="notes-page">
+  <div class="notes-page" :class="{ fixed: searchNotesFix }">
     <NewNote />
     <SearchNotes />
     <Notes />
@@ -28,6 +28,38 @@ import SearchNotes from '~/components/notes-page/Search-notes'
 import Notes from '~/components/notes-page/Notes'
 
 export default {
-  components: { NewNote, SearchNotes, Notes }
+  components: { NewNote, SearchNotes, Notes },
+
+  data() {
+    return {
+      searchNotesFix: false
+    }
+  },
+
+  mounted() {
+    window.addEventListener('scroll', this.searchFix)
+  },
+
+  destroyed() {
+    window.removeEventListener('scroll', this.searchFix)
+  },
+
+  methods: {
+    searchFix() {
+      if (window.innerWidth > 768) {
+        if (document.documentElement.scrollTop > 468) {
+          this.searchNotesFix = true
+        } else {
+          this.searchNotesFix = false
+        }
+      } else if (window.innerWidth <= 768) {
+        if (document.documentElement.scrollTop > 80) {
+          this.searchNotesFix = true
+        } else {
+          this.searchNotesFix = false
+        }
+      }
+    }
+  }
 }
 </script>
