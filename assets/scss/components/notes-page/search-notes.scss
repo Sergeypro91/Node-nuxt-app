@@ -1,3 +1,5 @@
+// WHITE THEME
+
 .fixed {
   .search-notes {
     width: 100%;
@@ -11,20 +13,19 @@
     .search-notes__wrapper {
       max-width: 1340px;
       margin: 0 auto;
-      padding: $half-margin $margin;
+      padding: 0 $margin;
     }
   }
 }
 
 .search-notes {
   top: -80px;
-  margin-bottom: $half-margin;
   transition: all 0.01s cubic-bezier(0.02, 0.01, 0.47, 1);
   .search-notes__wrapper {
-    max-height: 80px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: $margin 0;
   }
 }
 
@@ -48,18 +49,30 @@
   }
 }
 
+// DARCK THEME
+
+.darck__theme {
+  .fixed {
+    .search-notes {
+      background: rgba($bg_black-theme, 0.8);
+    }
+  }
+}
+
 @media screen and (max-width: 767px) {
   .fixed {
     .search-notes {
       margin: 0;
       .search-notes__wrapper {
-        padding: $half-margin;
+        padding: 0 $half-margin;
       }
     }
   }
 
   .search-notes {
-    margin-top: $half-margin;
+    .search-notes__wrapper {
+      padding: $half-margin 0;
+    }
   }
 
   .search-notes__header {

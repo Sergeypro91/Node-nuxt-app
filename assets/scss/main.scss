@@ -4,9 +4,12 @@
 
 html {
   font-size: $desktopFont;
-  background: $bg_white-theme;
-  color: $font-color_main_white-theme;
   height: 100%;
+  body {
+    background: $bg_white-theme;
+    color: $font-color_main_white-theme;
+    transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+  }
 }
 
 @media screen and (max-width: $desktopWidth) {
@@ -216,17 +219,6 @@ footer {
   }
 }
 
-.hover:hover {
-  border: 1px solid $accent-color;
-  box-shadow: 0 6px 28px -4px #0000001f;
-  transition-delay: 0s;
-
-  svg {
-    width: 24px;
-    height: 24px;
-  }
-}
-
 .input_darck {
   background: $input_black-theme;
   color: $font-color_main-transparent_black-theme;
@@ -274,14 +266,14 @@ footer {
     }
   }
   &:hover {
-    border-color: $accent-color;
+    border-color: $accent-color !important;
     button {
-      color: $accent-color;
+      color: $accent-color !important;
     }
     svg {
       width: 24px;
       height: 24px;
-      fill: $accent-color;
+      fill: $accent-color !important;
     }
   }
   .btn__icon {
@@ -333,4 +325,32 @@ footer {
 
 .btn_vk {
   background: $vk-color;
+}
+
+// DARCK THEME
+
+.darck__theme {
+  background: $bg_black-theme;
+  color: $font-color_main_black-theme;
+  .icon {
+    fill: $font-color_main_black-theme;
+  }
+
+  .input {
+    background: $input_black-theme;
+    border: 1px solid $stroke_black-theme;
+  }
+}
+
+// Active or Hover
+
+.hover:hover {
+  border: 1px solid $accent-color;
+  box-shadow: 0 6px 28px -4px #0000001f;
+  transition-delay: 0s;
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
 }

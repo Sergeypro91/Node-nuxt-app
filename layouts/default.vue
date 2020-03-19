@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper" :class="{ fixed: layoutFix }">
+  <div class="wrapper" :class="{ fixed: layoutFix, fixed__nn: fixedNN }">
     <header>
       <Header />
     </header>
@@ -22,7 +22,8 @@ export default {
   data() {
     return {
       top: 0,
-      layoutFix: false
+      layoutFix: false,
+      fixedNN: false
     }
   },
 
@@ -39,7 +40,8 @@ export default {
       const top = window.pageYOffset
 
       if (window.innerWidth > 767) {
-        if (document.documentElement.scrollTop > 468) {
+        if (document.documentElement.scrollTop > 453) {
+          this.fixedNN = true
           if (top >= this.top) {
             this.top = top
             this.layoutFix = false
@@ -49,6 +51,7 @@ export default {
           }
         } else {
           this.layoutFix = false
+          this.fixedNN = false
         }
       } else if (window.innerWidth <= 767) {
         if (document.documentElement.scrollTop > 80) {

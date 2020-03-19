@@ -1,8 +1,4 @@
-.fixed {
-  .notes {
-    margin-top: calc(#{$margin} + 57px + #{$margin});
-  }
-}
+// WHITE THEME
 
 .notes {
   width: 100%;
@@ -120,6 +116,32 @@
   }
 }
 
+// DARCK THEME
+
+.darck__theme {
+  .note {
+    background: $input_black-theme;
+  }
+
+  .note__footer {
+    .note__auhtor {
+      .note__auhtor-info {
+        .p,
+        .p_extra-small {
+          color: $font-color_main-transparent_black-theme;
+        }
+      }
+    }
+
+    .btn_gray {
+      border-color: $font-color_main-transparent_black-theme;
+      .icon {
+        fill: $font-color_main-transparent_black-theme;
+      }
+    }
+  }
+}
+
 @media screen and (min-width: 1025px) {
   .note {
     width: calc((100% - #{$margin}) / 3);
@@ -150,11 +172,6 @@
 }
 
 @media screen and (max-width: 767px) {
-  .fixed {
-    .notes {
-      margin-top: calc(#{$half-margin} * 2 + 47px);
-    }
-  }
   .notes {
     transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
   }

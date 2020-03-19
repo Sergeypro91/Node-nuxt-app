@@ -1,3 +1,5 @@
+// WHITE THEME
+
 .header__wrapper {
   width: 100%;
   display: flex;
@@ -66,6 +68,54 @@
             display: none;
           }
         }
+      }
+    }
+  }
+}
+
+// DARCK THEME
+
+.darck__theme {
+  .header__logo {
+    a {
+      .header__logo-text_white {
+        color: $bg_black-theme;
+      }
+      .header__logo-text_black {
+        color: $font-color_main_black-theme;
+      }
+      .header__logo-bg {
+        background: $font-color_main_black-theme;
+      }
+    }
+    &:hover {
+      a {
+        .header__logo-text_white {
+          color: $font-color_main_black-theme;
+        }
+      }
+    }
+  }
+
+  .header__menu {
+    background: rgba($bg_black-theme, 0.8);
+    border-color: $stroke_black-theme;
+    .header__menu-ul {
+      .header__menu-li {
+        .header__menu-link {
+          color: $font-color_main_black-theme;
+        }
+      }
+    }
+  }
+}
+
+// Active or Hover
+
+.header__wrapper {
+  .header__menu {
+    .header__menu-ul {
+      .header__menu-li {
         .header__menu-link_active {
           color: $accent-color;
           position: relative;
@@ -87,8 +137,24 @@
   }
 }
 
+@media screen and (min-width: $tableWidth) {
+  .fixed__nn {
+    header {
+      margin-bottom: 373px;
+    }
+  }
+  .fixed {
+    header {
+      margin-bottom: 490px;
+    }
+  }
+}
+
 @media screen and (max-width: $phoneWidth) {
   .fixed {
+    header {
+      margin-bottom: 77px;
+    }
     .header__menu {
       bottom: 0px;
     }
@@ -105,6 +171,7 @@
     background: rgba($bg_white-theme, 0.8);
     backdrop-filter: blur(2px);
     border: 1px solid $stroke_white-theme;
+    border-bottom: none;
     border-radius: 15px 15px 0 0;
     z-index: 999;
     transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
@@ -116,10 +183,9 @@
           display: flex;
           flex-direction: column;
           align-items: center;
+          font-size: rem(14px) !important;
           svg {
             display: block !important;
-            width: 24px;
-            height: 24px;
           }
         }
         .header__menu-link_active {

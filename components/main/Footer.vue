@@ -36,7 +36,7 @@
     </div>
     <div class="footer__contact-me">
       <div class="footer__toogle-theme">
-        <div class="toggler">
+        <div class="toggler" @click="toggleTheme">
           <div class="toggler-manipulator"></div>
         </div>
         <div class="p_small">Toggler</div>
@@ -79,3 +79,27 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      toggler: false
+    }
+  },
+
+  methods: {
+    toggleTheme() {
+      const el = document.body
+
+      this.toggler = !this.toggler
+
+      if (this.toggler) {
+        el.classList.add('darck__theme')
+      } else {
+        el.classList.remove('darck__theme')
+      }
+    }
+  }
+}
+</script>
