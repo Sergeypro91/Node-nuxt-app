@@ -17,7 +17,8 @@
 .note {
   min-width: 290px;
   display: inline-block;
-  padding: $half-margin;
+  position: relative;
+  padding: 55px $half-margin $half-margin $half-margin;
   margin: 0 $half-margin $half-margin 0;
   background: $input_white-theme;
   border-radius: 5px;
@@ -44,6 +45,9 @@
   display: flex;
   align-self: start;
   align-items: center;
+  position: absolute;
+  top: $half-margin;
+  right: $half-margin;
 }
 
 .note__type-change_standart,
@@ -121,6 +125,9 @@
 .darck__theme {
   .note {
     background: $input_black-theme;
+    .note__body {
+      color: $font-color_main_body-note_black-theme;
+    }
   }
 
   .note__footer {
@@ -139,6 +146,10 @@
         fill: $font-color_main-transparent_black-theme;
       }
     }
+  }
+
+  .note:hover {
+    box-shadow: 0 30px 30px #b7b7b71a;
   }
 }
 

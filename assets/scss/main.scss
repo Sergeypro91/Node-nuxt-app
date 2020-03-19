@@ -340,6 +340,10 @@ footer {
     background: $input_black-theme;
     border: 1px solid $stroke_black-theme;
   }
+
+  .hover:hover {
+    box-shadow: 0 6px 28px -4px #ffffff4f;
+  }
 }
 
 // Active or Hover

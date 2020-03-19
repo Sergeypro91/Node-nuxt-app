@@ -1,5 +1,7 @@
 .new-note {
   padding-top: $margin;
+  background: rgba($bg_white-theme, 0.8);
+  backdrop-filter: blur(2px);
   transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
 }
 
@@ -134,6 +136,31 @@
   }
 }
 
+// DARCK THEME
+
+.darck__theme {
+  .new-note {
+    background: $bg_transparent-black-theme;
+    .new-note__type-child {
+      label {
+        span {
+          .p {
+            color: $font-color_main_black-theme;
+          }
+        }
+      }
+    }
+    .btn_gray {
+      border-color: $font-color_main_black-theme;
+      .btn__icon {
+        svg {
+          fill: $font-color_main_black-theme;
+        }
+      }
+    }
+  }
+}
+
 @media screen and (min-width: $tableWidth) {
   .fixed__nn {
     .new-note {
@@ -145,8 +172,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: rgba($bg_white-theme, 0.8);
-      backdrop-filter: blur(2px);
       z-index: 999;
       .new-note__wrapper {
         width: 500px;
@@ -161,6 +186,19 @@
             .new-note__type-child {
               &:first-child {
                 margin: 0;
+              }
+            }
+          }
+        }
+        .new-note__footer {
+          .new-note__ui {
+            justify-content: space-between;
+            .btn:nth-child(2n) {
+              display: block;
+              svg {
+                width: 24px;
+                height: 24px;
+                transform: rotate(45deg);
               }
             }
           }
@@ -180,7 +218,6 @@
     position: fixed;
     left: 100%;
     top: 0;
-    background: $bg_white-theme;
     margin: 0;
     padding: 0 $half-margin;
     z-index: 998;
