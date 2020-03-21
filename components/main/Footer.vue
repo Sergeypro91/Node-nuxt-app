@@ -82,9 +82,9 @@
 
 <script>
 export default {
-  data() {
-    return {
-      toggler: false
+  computed: {
+    theme() {
+      return this.$store.state.theme.toggler
     }
   },
 
@@ -92,9 +92,9 @@ export default {
     toggleTheme() {
       const el = document.body
 
-      this.toggler = !this.toggler
+      this.$store.commit('theme/toggle')
 
-      if (this.toggler) {
+      if (this.$store.state.theme.toggler) {
         el.classList.add('darck__theme')
       } else {
         el.classList.remove('darck__theme')

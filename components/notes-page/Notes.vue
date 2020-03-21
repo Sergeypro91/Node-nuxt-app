@@ -60,77 +60,12 @@
 
 <script>
 export default {
-  data() {
-    return {
-      notesHeight: null,
-      notesWidth: 0,
-      notes: [
-        {
-          title: 'Some note title for test notes respons',
-          description:
-            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quos ducimus pariatur quo eius numquam sapiente doloremque asperiores placeat. Ea accusamus architecto cumque nisi qui officiis? Cumque temporibus nulla iste alias dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quos ducimus pariatur quo eius numquam sapiente doloremque asperiores placeat. Ea accusamus architecto cumque nisi qui officiis? Cumque temporibus nulla iste alias dolorum.',
-          author: {
-            name: 'Sergeyprostoas',
-            img: '~/static/img/users/user1.jpg'
-          },
-          publishTime: new Date(Date.now()).toLocaleString()
-        },
-
-        {
-          title: 'Some note title for test notes respons',
-          description:
-            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quos ducimus pariatur quo eius numquam sapiente doloremque asperiores placeat. Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quos ducimus pariatur quo eius numquam sapiente doloremque asperiores placeat.Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quos ducimus pariatur quo eius numquam sapiente doloremque asperiores placeat. Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quos ducimus pariatur quo eius numquam sapiente doloremque asperiores placeat.',
-          author: {
-            name: 'Sergeyprostoas',
-            img: '~/static/img/users/user1.jpg'
-          },
-          publishTime: new Date(Date.now()).toLocaleString()
-        },
-
-        {
-          title: 'Some note title for test notes respons',
-          description:
-            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quos ducimus pariatur quo eius numquam sapiente doloremque asperiores placeat.',
-          author: {
-            name: 'Sergeyprostoas',
-            img: '~/static/img/users/user1.jpg'
-          },
-          publishTime: new Date(Date.now()).toLocaleString()
-        },
-
-        {
-          title: 'Some note title for test notes respons',
-          description:
-            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quos ducimus pariatur quo eius numquam sapiente doloremque asperiores placeat. Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quos ducimus pariatur quo eius numquam sapiente doloremque asperiores placeat.Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-          author: {
-            name: 'Sergeyprostoas',
-            img: '~/static/img/users/user1.jpg'
-          },
-          publishTime: new Date(Date.now()).toLocaleString()
-        },
-
-        {
-          title: 'Some note title for test notes respons',
-          description:
-            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quos ducimus pariatur quo eius numquam sapiente doloremque asperiores placeat. Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quos ducimus pariatur quo eius numquam sapiente doloremque asperiores placeat.',
-          author: {
-            name: 'Sergeyprostoas',
-            img: '~/static/img/users/user1.jpg'
-          },
-          publishTime: new Date(Date.now()).toLocaleString()
-        },
-
-        {
-          title: 'Some note title for test notes respons',
-          description:
-            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quos ducimus pariatur quo eius numquam sapiente doloremque asperiores placeat. Ea accusamus architecto cumque nisi qui officiis? Cumque temporibus nulla iste alias dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quos ducimus pariatur quo eius numquam sapiente doloremque asperiores placeat. Ea accusamus architecto cumque nisi qui officiis? Cumque temporibus nulla iste alias dolorum.',
-          author: {
-            name: 'Sergeyprostoas',
-            img: '~/static/img/users/user1.jpg'
-          },
-          publishTime: new Date(Date.now()).toLocaleString()
-        }
-      ]
+  computed: {
+    notes() {
+      return this.$store.state.notes.notes
+    },
+    notesHeight() {
+      return this.$store.state.notes.notesHeight
     }
   },
 
@@ -171,14 +106,14 @@ export default {
       }
 
       if (window.innerWidth > BPTwoColl) {
-        this.notesHeight = bigestCollHeight(3, margin)
+        this.$store.commit('notes/notesHeight', bigestCollHeight(3, margin))
       } else if (
         window.innerWidth <= BPTwoColl &&
         !(window.innerWidth < BPOneColl)
       ) {
-        this.notesHeight = bigestCollHeight(2, margin)
+        this.$store.commit('notes/notesHeight', bigestCollHeight(2, margin))
       } else {
-        this.notesHeight = null
+        this.$store.commit('notes/notesHeight', bigestCollHeight(1, margin))
       }
     }
   }

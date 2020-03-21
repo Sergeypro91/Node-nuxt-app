@@ -4,7 +4,7 @@
   width: 100%;
   display: flex;
   flex-flow: column wrap;
-  margin-bottom: $margin;
+  margin-bottom: calc(#{$margin} + #{$half-margin});
   &:before,
   &:after {
     content: '';
@@ -183,17 +183,17 @@
 }
 
 @media screen and (max-width: 767px) {
-  .notes {
-    transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+  .fixed {
+    .notes {
+      margin-top: 62px;
+    }
   }
+
   .note {
     width: 100%;
     &:nth-child(n) {
       order: 1;
       margin-right: 0;
-    }
-    &:last-child {
-      margin-bottom: $margin;
     }
   }
 }

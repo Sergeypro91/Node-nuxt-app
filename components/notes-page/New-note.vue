@@ -1,5 +1,5 @@
 <template>
-  <div class="new-note">
+  <div class="new-note" :class="{ showNN: this.$store.state.ui.nn }">
     <div class="new-note__wrapper">
       <div class="new-note__headline">
         <div class="h1">Create note</div>
@@ -52,7 +52,7 @@
             </div>
             <button>new note</button>
           </div>
-          <div class="btn btn_gray">
+          <div class="btn btn_gray" @click="showNN">
             <div class="btn__icon">
               <svg
                 class="icon icon_white"
@@ -70,3 +70,13 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  methods: {
+    showNN() {
+      this.$store.commit('ui/nn')
+    }
+  }
+}
+</script>

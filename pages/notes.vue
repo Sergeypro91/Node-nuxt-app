@@ -3,7 +3,7 @@
     <NewNote />
     <SearchNotes />
     <Notes />
-    <div class="nno">
+    <div class="nno" @click="showNN">
       <div class="btn btn_primary hover">
         <div class="btn__icon">
           <svg
@@ -28,6 +28,12 @@ import SearchNotes from '~/components/notes-page/Search-notes'
 import Notes from '~/components/notes-page/Notes'
 
 export default {
-  components: { NewNote, SearchNotes, Notes }
+  components: { NewNote, SearchNotes, Notes },
+
+  methods: {
+    showNN() {
+      this.$store.commit('ui/nn')
+    }
+  }
 }
 </script>

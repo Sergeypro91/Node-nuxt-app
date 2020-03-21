@@ -19,11 +19,15 @@ import Footer from '~/components/main/Footer'
 export default {
   components: { Header, Footer },
 
-  data() {
-    return {
-      top: 0,
-      layoutFix: false,
-      fixedNN: false
+  computed: {
+    top() {
+      return this.$store.state.ui.top
+    },
+    layoutFix() {
+      return this.$store.state.ui.layoutFix
+    },
+    fixedNN() {
+      return this.$store.state.ui.fixedNN
     }
   },
 
@@ -41,29 +45,29 @@ export default {
 
       if (window.innerWidth > 767) {
         if (document.documentElement.scrollTop > 453) {
-          this.fixedNN = true
+          this.$store.commit('ui/fixedNN', true)
           if (top >= this.top) {
-            this.top = top
-            this.layoutFix = false
+            this.$store.commit('ui/top', top)
+            this.$store.commit('ui/layoutFix', false)
           } else {
-            this.top = top
-            this.layoutFix = true
+            this.$store.commit('ui/top', top)
+            this.$store.commit('ui/layoutFix', true)
           }
         } else {
-          this.layoutFix = false
-          this.fixedNN = false
+          this.$store.commit('ui/layoutFix', false)
+          this.$store.commit('ui/fixedNN', false)
         }
       } else if (window.innerWidth <= 767) {
         if (document.documentElement.scrollTop > 80) {
           if (top >= this.top) {
-            this.top = top
-            this.layoutFix = false
+            this.$store.commit('ui/top', top)
+            this.$store.commit('ui/layoutFix', false)
           } else {
-            this.top = top
-            this.layoutFix = true
+            this.$store.commit('ui/top', top)
+            this.$store.commit('ui/layoutFix', true)
           }
         } else {
-          this.layoutFix = false
+          this.$store.commit('ui/layoutFix', false)
         }
       }
     }
