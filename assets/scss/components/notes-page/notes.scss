@@ -17,24 +17,24 @@
 .note {
   min-width: 290px;
   display: inline-block;
-  position: relative;
-  padding: 55px $half-margin $half-margin $half-margin;
-  margin: 0 $half-margin $half-margin 0;
+  padding: $half-margin;
+  margin: 7px $half-margin 8px 0;
   background: $input_white-theme;
   border-radius: 5px;
   transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
   &:hover {
     box-shadow: 0 30px 30px #0000000a;
-    transform: translate(0, -6px);
+    margin: 0 $half-margin $half-margin 0;
   }
 }
 
 .note__header {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
 }
 
 .note__title {
+  order: 2;
   .h2 {
     line-height: normal;
     font-family: $mainFontMedium;
@@ -42,20 +42,21 @@
 }
 
 .note__type-change {
+  width: 100%;
   display: flex;
-  align-self: start;
-  align-items: center;
-  position: absolute;
+  justify-content: flex-end;
+  order: 1;
   top: $half-margin;
   right: $half-margin;
+  margin-bottom: $half-margin;
 }
 
 .note__type-change_standart,
 .note__type-change_priority,
 .note__type-change_important {
-  width: 15px;
-  height: 15px;
-  margin-left: 15px;
+  width: $half-margin;
+  height: $half-margin;
+  margin: 5px 0 5px $half-margin;
   background: $input_white-theme;
   border-radius: 50%;
   cursor: pointer;
@@ -120,11 +121,59 @@
   }
 }
 
+.note__edit {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 100%;
+  background: rgba($bg_white-theme, 0.8);
+  backdrop-filter: blur(2px);
+  z-index: 999;
+  transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+  .note__edit-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    max-width: 500px;
+    .note__edit-header {
+      text-align: center;
+      .h1 {
+        font-family: $mainFontBold;
+      }
+    }
+    .note__edit-footer {
+      display: flex;
+      justify-content: space-between;
+      .btn:nth-child(2n) {
+        display: block;
+        svg {
+          width: 24px;
+          height: 24px;
+          transform: rotate(45deg);
+        }
+      }
+    }
+  }
+}
+
+.note__edit-active {
+  display: flex;
+  left: 0;
+}
+
 // DARCK THEME
 
 .darck__theme {
   .note {
     background: $input_black-theme;
+    .note__type-change_standart {
+      background: $input_black-theme;
+    }
     .note__body {
       color: $font-color_main_body-note_black-theme;
     }
@@ -139,17 +188,21 @@
         }
       }
     }
+  }
 
-    .btn_gray {
-      border-color: $font-color_main-transparent_black-theme;
-      .icon {
-        fill: $font-color_main-transparent_black-theme;
-      }
+  .btn_gray {
+    border-color: $font-color_main-transparent_black-theme;
+    .icon {
+      fill: $font-color_main-transparent_black-theme;
     }
   }
 
   .note:hover {
     box-shadow: 0 30px 30px #b7b7b71a;
+  }
+
+  .note__edit {
+    background: rgba($bg_black-theme, 0.8);
   }
 }
 
@@ -195,5 +248,9 @@
       order: 1;
       margin-right: 0;
     }
+  }
+
+  .note__edit-wrapper {
+    padding: $half-margin;
   }
 }

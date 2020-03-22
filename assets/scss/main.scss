@@ -339,6 +339,10 @@ footer {
   .input {
     background: $input_black-theme;
     border: 1px solid $stroke_black-theme;
+    input,
+    textarea {
+      color: $font-color_main_black-theme;
+    }
   }
 
   .hover:hover {

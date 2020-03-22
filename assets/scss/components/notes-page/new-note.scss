@@ -7,6 +7,9 @@
 
 .new-note__headline {
   display: none;
+  .h1 {
+    font-family: $mainFontBold;
+  }
 }
 
 .new-note__header {
@@ -233,7 +236,6 @@
       display: block;
       margin-bottom: $margin;
       .h1 {
-        font-family: $mainFontBold;
         text-align: center;
         margin-bottom: 0;
       }
