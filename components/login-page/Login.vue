@@ -5,10 +5,12 @@
         <div class="h1 login-form__title">Login</div>
 
         <div class="login-form__addition">
-          <a href="#" class="p_small login-form__sigin">sign up</a>
-          <a href="#" class="p_small login-form__restore-password">
+          <n-link to="/signup" class="p_small login-form__sigin"
+            >sign up</n-link
+          >
+          <n-link to="" class="p_small login-form__restore-password">
             forgot password?
-          </a>
+          </n-link>
         </div>
       </div>
 

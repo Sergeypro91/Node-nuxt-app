@@ -1,0 +1,10 @@
+.signup-page {
+  min-height: calc(100vh - 80px - 60px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .login-form {
+    width: 100%;
+    max-width: 400px;
+  }
+}
