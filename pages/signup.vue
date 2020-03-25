@@ -1,6 +1,6 @@
 <template>
   <div class="signup-page">
-    <Signup />
+    <Signup :on-signup="signupUser" />
   </div>
 </template>
 
@@ -8,6 +8,12 @@
 import Signup from '~/components/signup-page/Signup'
 
 export default {
-  components: { Signup }
+  components: { Signup },
+
+  methods: {
+    signupUser(data) {
+      console.log(data)
+    }
+  }
 }
 </script>

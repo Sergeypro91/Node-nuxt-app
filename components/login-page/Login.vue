@@ -1,6 +1,6 @@
 <template>
   <div class="login-form">
-    <form action="" class="login-form__wrapper">
+    <form class="login-form__wrapper" @submit.prevent="onLogin(userInfo)">
       <div class="login-form__head">
         <div class="h1 login-form__title">Login</div>
 
@@ -27,7 +27,11 @@
             />
           </svg>
         </div>
-        <input type="text" placeholder="User name" />
+        <input
+          v-model="userInfo.username"
+          type="email"
+          placeholder="User name"
+        />
       </div>
 
       <div class="input hover">
@@ -42,7 +46,11 @@
             />
           </svg>
         </div>
-        <input type="text" placeholder="Password" />
+        <input
+          v-model="userInfo.password"
+          type="password"
+          placeholder="Password"
+        />
       </div>
 
       <div class="btn btn_primary btn_full-width hover">
@@ -100,3 +108,23 @@
     </form>
   </div>
 </template>
+
+<script>
+export default {
+  props: {
+    onLogin: {
+      type: Function,
+      default: null
+    }
+  },
+
+  data() {
+    return {
+      userInfo: {
+        username: '',
+        password: ''
+      }
+    }
+  }
+}
+</script>
