@@ -299,6 +299,9 @@ footer {
   button {
     color: $bg_white-theme;
   }
+  &:hover {
+    background: lighten($accent-color, 5%);
+  }
 }
 
 .btn_full-width {
@@ -327,14 +330,23 @@ footer {
 
 .btn_google {
   background: $google-color;
+  &:hover {
+    background: lighten($google-color, 5%);
+  }
 }
 
 .btn_facebook {
   background: $facebook-color;
+  &:hover {
+    background: lighten($facebook-color, 5%);
+  }
 }
 
 .btn_vk {
   background: $vk-color;
+  &:hover {
+    background: lighten($vk-color, 5%);
+  }
 }
 
 .error {
@@ -415,7 +427,8 @@ footer {
     }
   }
 
-  .hover:hover {
+  .hover:hover,
+  .message {
     box-shadow: 0 6px 28px -4px #ffffff4f;
   }
 }
@@ -424,7 +437,7 @@ footer {
 
 .hover:hover {
   border: 1px solid $accent-color;
-  box-shadow: 0 6px 28px -4px #0000001f;
+  box-shadow: 0 6px 28px -4px #00000033;
   transition-delay: 0s;
 
   svg {

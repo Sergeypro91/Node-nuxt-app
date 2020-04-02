@@ -9,7 +9,7 @@
         class="input hover"
         :class="{
           input_error: $v.userInfo.userName.$error,
-          input_valid: !$v.userInfo.userName.$error
+          input_valid: $v.userInfo.userName.required
         }"
       >
         <div class="input__icon">
@@ -40,7 +40,7 @@
         class="input hover"
         :class="{
           input_error: $v.userInfo.email.$error,
-          input_valid: !$v.userInfo.email.$error
+          input_valid: $v.userInfo.email.required
         }"
       >
         <div class="input__icon">
@@ -70,7 +70,7 @@
         class="input hover"
         :class="{
           input_error: $v.userInfo.password.$error,
-          input_valid: !$v.userInfo.password.$error
+          input_valid: $v.userInfo.password.required
         }"
       >
         <div class="input__icon">
@@ -100,7 +100,7 @@
         class="input hover"
         :class="{
           input_error: $v.userInfo.repeatPassword.$error,
-          input_valid: !$v.userInfo.repeatPassword.$error
+          input_valid: $v.userInfo.repeatPassword.required
         }"
       >
         <div class="input__icon">
@@ -212,6 +212,7 @@ export default {
         minLength: minLength(6)
       },
       repeatPassword: {
+        required,
         sameAsPassword: sameAs('password')
       }
     }
