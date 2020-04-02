@@ -1,6 +1,6 @@
 <template>
   <div class="login-page">
-    <Login :on-login="loginUser" />
+    <Login />
     <Slogan />
   </div>
 </template>
@@ -10,12 +10,6 @@ import Login from '~/components/login-page/Login'
 import Slogan from '~/components/login-page/Slogan'
 
 export default {
-  components: { Login, Slogan },
-
-  methods: {
-    loginUser(data) {
-      console.log(data)
-    }
-  }
+  components: { Login, Slogan }
 }
 </script>

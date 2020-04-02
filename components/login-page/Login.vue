@@ -1,6 +1,6 @@
 <template>
   <div class="login-form">
-    <form class="login-form__wrapper" @submit.prevent="onLogin(userInfo)">
+    <form class="login-form__wrapper" @submit.prevent="onLogin">
       <div class="login-form__head">
         <div class="h1 login-form__title">Login</div>
 
@@ -14,7 +14,13 @@
         </div>
       </div>
 
-      <div class="input hover">
+      <div
+        class="input hover"
+        :class="{
+          input_error: $v.userInfo.userName.$error,
+          input_valid: !$v.userInfo.userName.$error
+        }"
+      >
         <div class="input__icon">
           <svg
             class="icon"
@@ -28,13 +34,20 @@
           </svg>
         </div>
         <input
-          v-model="userInfo.username"
+          v-model.trim="$v.userInfo.userName.$model"
           type="email"
           placeholder="User name"
+          autocomplete="username"
         />
       </div>
 
-      <div class="input hover">
+      <div
+        class="input hover"
+        :class="{
+          input_error: $v.userInfo.password.$error,
+          input_valid: !$v.userInfo.password.$error
+        }"
+      >
         <div class="input__icon">
           <svg
             class="icon"
@@ -47,9 +60,10 @@
           </svg>
         </div>
         <input
-          v-model="userInfo.password"
+          v-model.trim="$v.userInfo.password.$model"
           type="password"
           placeholder="Password"
+          autocomplete="current-password"
         />
       </div>
 
@@ -110,19 +124,52 @@
 </template>
 
 <script>
-export default {
-  props: {
-    onLogin: {
-      type: Function,
-      default: null
-    }
-  },
+import { required, email, minLength } from 'vuelidate/lib/validators'
 
+export default {
   data() {
     return {
       userInfo: {
-        username: '',
-        password: ''
+        userName: '',
+        password: '',
+        submitStatus: null
+      }
+    }
+  },
+
+  validations: {
+    userInfo: {
+      userName: {
+        required,
+        email
+      },
+      password: {
+        required,
+        minLength: minLength(6)
+      }
+    }
+  },
+
+  methods: {
+    onLogin() {
+      this.$v.$touch()
+
+      if (this.$v.$invalid) {
+        this.submitStatus = 'ERROR'
+        console.log('ERROR!')
+      } else {
+        const user = {
+          email: this.userInfo.userName,
+          password: this.userInfo.password
+        }
+
+        console.log(user)
+
+        // do your submit logic here
+        this.submitStatus = 'PENDING'
+        setTimeout(() => {
+          this.submitStatus = 'OK'
+        }, 500)
       }
     }
   }

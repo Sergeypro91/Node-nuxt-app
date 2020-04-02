@@ -1,11 +1,17 @@
 <template>
   <div class="login-form">
-    <form class="login-form__wrapper" @submit.prevent="onSignup(userInfo)">
+    <form class="login-form__wrapper" @submit.prevent="onSignup">
       <div class="login-form__head">
         <div class="h1 login-form__title">Sign up</div>
       </div>
 
-      <div class="input hover">
+      <div
+        class="input hover"
+        :class="{
+          input_error: $v.userInfo.userName.$error,
+          input_valid: !$v.userInfo.userName.$error
+        }"
+      >
         <div class="input__icon">
           <svg
             class="icon"
@@ -19,13 +25,24 @@
           </svg>
         </div>
         <input
-          v-model="userInfo.username"
+          v-model.trim="$v.userInfo.userName.$model"
           type="text"
           placeholder="User name"
+          autocomplete="off"
         />
       </div>
+      <div v-if="!$v.userInfo.userName.minLength" class="p_extra-small error">
+        Name must have at least
+        {{ $v.userInfo.userName.$params.minLength.min }} letters.
+      </div>
 
-      <div class="input hover">
+      <div
+        class="input hover"
+        :class="{
+          input_error: $v.userInfo.email.$error,
+          input_valid: !$v.userInfo.email.$error
+        }"
+      >
         <div class="input__icon">
           <svg
             class="icon"
@@ -38,10 +55,24 @@
             />
           </svg>
         </div>
-        <input v-model="userInfo.email" type="text" placeholder="User email" />
+        <input
+          v-model.trim="$v.userInfo.email.$model"
+          type="text"
+          placeholder="User email"
+          autocomplete="username"
+        />
+      </div>
+      <div v-if="!$v.userInfo.email.email" class="p_extra-small error">
+        It doesn't look like on email address
       </div>
 
-      <div class="input hover">
+      <div
+        class="input hover"
+        :class="{
+          input_error: $v.userInfo.password.$error,
+          input_valid: !$v.userInfo.password.$error
+        }"
+      >
         <div class="input__icon">
           <svg
             class="icon"
@@ -54,36 +85,162 @@
           </svg>
         </div>
         <input
-          v-model="userInfo.password"
+          v-model.trim="$v.userInfo.password.$model"
           type="password"
           placeholder="Password"
+          autocomplete="new-password"
         />
+      </div>
+      <div v-if="!$v.userInfo.password.minLength" class="p_extra-small error">
+        Password must have at least
+        {{ $v.userInfo.password.$params.minLength.min }} letters.
+      </div>
+
+      <div
+        class="input hover"
+        :class="{
+          input_error: $v.userInfo.repeatPassword.$error,
+          input_valid: !$v.userInfo.repeatPassword.$error
+        }"
+      >
+        <div class="input__icon">
+          <svg
+            class="icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7,17c2.414,0,4.435-1.721,4.898-4H14v2h2v-2h2v3h2v-3h1v-2h-9.102C11.435,8.721,9.414,7,7,7c-2.757,0-5,2.243-5,5 S4.243,17,7,17z M7,9c1.654,0,3,1.346,3,3s-1.346,3-3,3s-3-1.346-3-3S5.346,9,7,9z"
+            />
+          </svg>
+        </div>
+        <input
+          v-model.trim="$v.userInfo.repeatPassword.$model"
+          type="password"
+          placeholder="Repeat password"
+          autocomplete="new-password"
+        />
+      </div>
+      <div
+        v-if="!$v.userInfo.repeatPassword.sameAsPassword"
+        class="p_extra-small error"
+      >
+        Passwords must be identical.
       </div>
 
       <div class="btn btn_primary btn_full-width hover">
         <div class="btn__icon"></div>
-        <button>Sign up</button>
+        <button type="submit">Sign up</button>
+      </div>
+
+      <div class="message">
+        <div v-if="submitStatus === 'OK'" class="message-ok">
+          <svg
+            class="icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12,2C6.486,2,2,6.486,2,12c0,5.514,4.486,10,10,10s10-4.486,10-10C22,6.486,17.514,2,12,2z M10.001,16.413l-3.713-3.705 L7.7,11.292l2.299,2.295l5.294-5.294l1.414,1.414L10.001,16.413z"
+            />
+          </svg>
+          <div class="p">
+            Thanks for your submission!
+          </div>
+        </div>
+        <div v-if="submitStatus === 'ERROR'" class="message-error">
+          <svg
+            class="icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M11.953,2C6.465,2,2,6.486,2,12s4.486,10,10,10s10-4.486,10-10S17.493,2,11.953,2z M13,17h-2v-2h2V17z M13,13h-2V7h2V13z"
+            />
+          </svg>
+          <div class="p">
+            Please fill the form correctly.
+          </div>
+        </div>
+        <div v-if="submitStatus === 'PENDING'" class="message-pending">
+          <svg
+            class="icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12,22c5.421,0,10-4.579,10-10h-2c0,4.337-3.663,8-8,8s-8-3.663-8-8c0-4.336,3.663-8,8-8V2C6.579,2,2,6.58,2,12 C2,17.421,6.579,22,12,22z"
+            />
+          </svg>
+          <div class="p">
+            Sending...
+          </div>
+        </div>
       </div>
     </form>
   </div>
 </template>
 
 <script>
-export default {
-  props: {
-    onSignup: {
-      type: Function,
-      default: null
-    }
-  },
+import { required, email, sameAs, minLength } from 'vuelidate/lib/validators'
 
+export default {
   data() {
     return {
       userInfo: {
-        username: '',
+        userName: '',
         email: '',
-        password: ''
+        password: '',
+        repeatPassword: ''
+      },
+      submitStatus: null
+    }
+  },
+
+  validations: {
+    userInfo: {
+      userName: {
+        required,
+        minLength: minLength(6)
+      },
+      email: {
+        required,
+        email
+      },
+      password: {
+        required,
+        minLength: minLength(6)
+      },
+      repeatPassword: {
+        sameAsPassword: sameAs('password')
       }
+    }
+  },
+
+  methods: {
+    onSignup() {
+      this.$v.$touch()
+
+      if (this.$v.$invalid) {
+        this.submitStatus = 'ERROR'
+      } else {
+        const user = {
+          userName: this.userInfo.userName.toLowerCase(),
+          email: this.userInfo.email.toLowerCase(),
+          password: this.userInfo.password
+        }
+
+        // do your submit logic here
+        this.submitStatus = 'PENDING'
+        setTimeout(() => {
+          this.submitStatus = 'OK'
+          console.log(user)
+        }, 1000)
+      }
+
+      setTimeout(() => {
+        this.submitStatus = null
+      }, 2000)
     }
   }
 }

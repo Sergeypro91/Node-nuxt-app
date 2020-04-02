@@ -231,6 +231,13 @@ footer {
   }
 }
 
+.input_valid {
+  border-color: $ok-color;
+}
+.input_error {
+  border-color: $important-color;
+}
+
 //Button
 .btn {
   position: relative;
@@ -328,6 +335,66 @@ footer {
 
 .btn_vk {
   background: $vk-color;
+}
+
+.error {
+  position: relative;
+  top: -$half-margin;
+  text-align: center;
+  height: 0;
+  margin: 0;
+  color: $important-color;
+}
+
+.message {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  .message-ok,
+  .message-error,
+  .message-pending {
+    display: flex;
+    align-items: center;
+    padding: $half-margin;
+    margin-top: $margin;
+    border-radius: 5px;
+    svg {
+      width: 24px;
+      height: 24px;
+      margin-right: $half-margin;
+      fill: $input_white-theme;
+    }
+    .p {
+      color: $input_white-theme;
+      margin: 0;
+    }
+  }
+  .message-ok {
+    background: $ok-color;
+  }
+  .message-error {
+    background: $important-color;
+  }
+  .message-pending {
+    background: $priority-color;
+    svg {
+      animation-name: spin;
+      animation-duration: 2000ms;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    }
+  }
 }
 
 // DARCK THEME
