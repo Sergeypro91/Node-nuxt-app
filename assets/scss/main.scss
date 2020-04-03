@@ -9,6 +9,7 @@ html {
     background: $bg_white-theme;
     color: $font-color_main_white-theme;
     transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+    overflow-x: hidden;
   }
 }
 
@@ -231,11 +232,14 @@ footer {
   }
 }
 
-.input_valid {
-  border-color: $ok-color;
-}
-.input_error {
-  border-color: $important-color;
+form {
+  .input.input_valid {
+    border-color: $ok-color;
+  }
+  .input.input_error {
+    border-color: $important-color;
+    animation: shake 1s;
+  }
 }
 
 //Button
@@ -359,7 +363,7 @@ footer {
 }
 
 .message {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -373,6 +377,8 @@ footer {
     padding: $half-margin;
     margin-top: $margin;
     border-radius: 5px;
+    box-shadow: 0 6px 28px -4px #ffffff4f;
+    animation: bounceInDown 1s;
     svg {
       width: 24px;
       height: 24px;
@@ -427,8 +433,7 @@ footer {
     }
   }
 
-  .hover:hover,
-  .message {
+  .hover:hover {
     box-shadow: 0 6px 28px -4px #ffffff4f;
   }
 }
@@ -436,7 +441,7 @@ footer {
 // Active or Hover
 
 .hover:hover {
-  border: 1px solid $accent-color;
+  border: 1px solid $accent-color !important;
   box-shadow: 0 6px 28px -4px #00000033;
   transition-delay: 0s;
 

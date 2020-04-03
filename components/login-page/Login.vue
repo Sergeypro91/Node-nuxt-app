@@ -202,17 +202,19 @@ export default {
       if (this.$v.$invalid) {
         this.submitStatus = 'ERROR'
       } else {
-        const user = {
+        const userFormData = {
           userName: this.userInfo.userName.toLowerCase(),
           password: this.userInfo.password
         }
 
-        // do your submit logic here
-        this.submitStatus = 'PENDING'
-        setTimeout(() => {
-          this.submitStatus = 'OK'
-          console.log(user)
-        }, 1000)
+        this.$store.dispatch('auth/login', userFormData)
+        this.$router.push('/notes')
+
+        // this.submitStatus = 'PENDING'
+        // setTimeout(() => {
+        //   this.submitStatus = 'OK'
+        //   console.log(user)
+        // }, 1000)
       }
 
       setTimeout(() => {

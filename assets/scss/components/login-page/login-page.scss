@@ -8,6 +8,7 @@
     flex-direction: column;
     align-items: center;
     flex: 2;
+    animation: bounceInLeft 1s;
     .login-form__wrapper {
       max-width: 350px;
       .login-form__head {
@@ -51,6 +52,7 @@
     flex: 3;
     padding-left: $margin;
     text-transform: uppercase;
+    animation: bounceInRight 1s;
     .slogan-text {
       width: 100%;
       max-width: 500px;
