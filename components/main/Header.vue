@@ -8,7 +8,7 @@
       </n-link>
     </div>
     <nav class="header__menu">
-      <ul v-if="$auth.loggedIn" class="header__menu-ul">
+      <ul v-if="$store.getters['auth/isAuthenticated']" class="header__menu-ul">
         <li class="header__menu-li">
           <n-link to="/notes" class="header__menu-link">
             <svg
@@ -38,7 +38,7 @@
           </n-link>
         </li>
         <li class="header__menu-li">
-          <n-link to="/" exact class="header__menu-link">
+          <n-link to="/logout" exact class="header__menu-link">
             <svg
               class="icon"
               xmlns="http://www.w3.org/2000/svg"

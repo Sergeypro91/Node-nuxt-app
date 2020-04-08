@@ -1,6 +1,6 @@
 <template>
   <div class="login-form">
-    <form class="login-form__wrapper" @submit.prevent="onLogin">
+    <form ref="form" class="login-form__wrapper" @submit.prevent="onLogin">
       <div class="login-form__head">
         <div class="h1 login-form__title">Login</div>
 
@@ -196,30 +196,27 @@ export default {
   },
 
   methods: {
-    onLogin() {
-      this.$v.$touch()
+    async onLogin() {
+      try {
+        this.$v.$touch()
 
-      if (this.$v.$invalid) {
-        this.submitStatus = 'ERROR'
-      } else {
-        const userFormData = {
-          userName: this.userInfo.userName.toLowerCase(),
-          password: this.userInfo.password
+        if (this.$v.$invalid) {
+          this.submitStatus = 'ERROR'
+        } else {
+          const userFormData = {
+            login: this.userInfo.userName.toLowerCase(),
+            password: this.userInfo.password
+          }
+
+          this.submitStatus = 'PENDING'
+
+          await this.$store.dispatch('auth/login', userFormData)
+          this.submitStatus = 'OK'
+          this.$router.push('/notes')
         }
-
-        this.$store.dispatch('auth/login', userFormData)
-        this.$router.push('/notes')
-
-        // this.submitStatus = 'PENDING'
-        // setTimeout(() => {
-        //   this.submitStatus = 'OK'
-        //   console.log(user)
-        // }, 1000)
+      } catch (e) {
+        this.submitStatus = 'ERROR'
       }
-
-      setTimeout(() => {
-        this.submitStatus = null
-      }, 2000)
     }
   }
 }

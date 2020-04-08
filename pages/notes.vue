@@ -30,6 +30,8 @@ import Notes from '~/components/notes-page/Notes'
 export default {
   components: { NewNote, SearchNotes, Notes },
 
+  middleware: ['loged-auth'],
+
   methods: {
     showNN() {
       this.$store.commit('ui/nn')

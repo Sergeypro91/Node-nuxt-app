@@ -8,6 +8,7 @@ const app = express()
 mongoose
   .set('useUnifiedTopology', true)
   .set('useNewUrlParser', true)
+  .set('useCreateIndex', true)
   .connect(keys.MONGO_URI)
   .then(() => console.log('MongoDB is connected...'))
   .catch((error) => console.error(error))
