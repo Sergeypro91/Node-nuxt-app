@@ -72,51 +72,6 @@
         <button>Login</button>
       </div>
 
-      <div class="message">
-        <div v-if="submitStatus === 'OK'" class="message-ok">
-          <svg
-            class="icon"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M12,2C6.486,2,2,6.486,2,12c0,5.514,4.486,10,10,10s10-4.486,10-10C22,6.486,17.514,2,12,2z M10.001,16.413l-3.713-3.705 L7.7,11.292l2.299,2.295l5.294-5.294l1.414,1.414L10.001,16.413z"
-            />
-          </svg>
-          <div class="p">
-            Thanks for your submission!
-          </div>
-        </div>
-        <div v-if="submitStatus === 'ERROR'" class="message-error">
-          <svg
-            class="icon"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M11.953,2C6.465,2,2,6.486,2,12s4.486,10,10,10s10-4.486,10-10S17.493,2,11.953,2z M13,17h-2v-2h2V17z M13,13h-2V7h2V13z"
-            />
-          </svg>
-          <div class="p">
-            {{ this.$store.getters.error }}
-          </div>
-        </div>
-        <div v-if="submitStatus === 'PENDING'" class="message-pending">
-          <svg
-            class="icon"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M12,22c5.421,0,10-4.579,10-10h-2c0,4.337-3.663,8-8,8s-8-3.663-8-8c0-4.336,3.663-8,8-8V2C6.579,2,2,6.58,2,12 C2,17.421,6.579,22,12,22z"
-            />
-          </svg>
-          <div class="p">
-            Sending...
-          </div>
-        </div>
-      </div>
-
       <div class="p_small login-form__text">
         Login with <b>ONE</b> click from social. network:
       </div>
@@ -177,8 +132,7 @@ export default {
       userInfo: {
         userName: '',
         password: ''
-      },
-      submitStatus: null
+      }
     }
   },
 
@@ -201,24 +155,24 @@ export default {
         this.$v.$touch()
 
         if (this.$v.$invalid) {
-          this.submitStatus = 'ERROR'
+          this.$store.dispatch('setSubmitStatus', 'ERROR')
         } else {
           const userFormData = {
             login: this.userInfo.userName.toLowerCase(),
             password: this.userInfo.password
           }
 
-          this.submitStatus = 'PENDING'
+          this.$store.dispatch('setSubmitStatus', 'PENDING')
 
           await this.$store.dispatch('auth/login', userFormData)
-          this.submitStatus = 'OK'
+          this.$store.dispatch('setSubmitStatus', 'OK')
           this.$router.push('/notes')
         }
       } catch (e) {
-        this.submitStatus = 'ERROR'
+        this.$store.dispatch('setSubmitStatus', 'ERROR')
 
         setTimeout(() => {
-          this.submitStatus = null
+          this.$store.dispatch('setSubmitStatus', null)
         }, 2000)
       }
     }

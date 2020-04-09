@@ -2,7 +2,8 @@
 /* eslint no-param-reassign: ["error", { "props": true, "ignorePropertyModificationsFor": ["state"] }] */
 
 export const state = () => ({
-  error: null
+  error: null,
+  submitStatus: null
 })
 
 export const mutations = {
@@ -12,9 +13,21 @@ export const mutations = {
 
   clearError(state) {
     state.error = null
+  },
+
+  setSubmitStatus(state, submitStatus) {
+    state.submitStatus = submitStatus
+  }
+}
+
+export const actions = {
+  setSubmitStatus({ commit }, submitStatus) {
+    commit('setSubmitStatus', submitStatus)
   }
 }
 
 export const getters = {
-  error: (state) => state.error
+  error: (state) => state.error,
+
+  submitStatus: (state) => state.submitStatus
 }
