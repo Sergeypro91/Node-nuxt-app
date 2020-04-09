@@ -21,6 +21,7 @@ module.exports.login = async (req, res) => {
         keys.JWT,
         { expiresIn: 60 * 60 }
       )
+
       res.json({ token })
     } else {
       res.status(401).json({ message: 'Password does not correct' })

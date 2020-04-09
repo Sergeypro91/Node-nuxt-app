@@ -98,7 +98,7 @@
             />
           </svg>
           <div class="p">
-            Please fill the form correctly.
+            {{ this.$store.getters.error }}
           </div>
         </div>
         <div v-if="submitStatus === 'PENDING'" class="message-pending">
@@ -216,6 +216,10 @@ export default {
         }
       } catch (e) {
         this.submitStatus = 'ERROR'
+
+        setTimeout(() => {
+          this.submitStatus = null
+        }, 2000)
       }
     }
   }
