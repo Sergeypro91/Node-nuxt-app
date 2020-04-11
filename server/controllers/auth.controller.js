@@ -4,7 +4,7 @@ const keys = require('../keys')
 const User = require('../models/user.model')
 
 module.exports.login = async (req, res) => {
-  const candidate = await User.findOne({ login: req.body.login })
+  const candidate = await User.findOne({ email: req.body.email })
 
   if (candidate) {
     const isPasswordCorrect = bcrypt.compareSync(
@@ -15,7 +15,7 @@ module.exports.login = async (req, res) => {
     if (isPasswordCorrect) {
       const token = jwt.sign(
         {
-          login: candidate.login,
+          email: candidate.email,
           userId: candidate._id
         },
         keys.JWT,
@@ -31,4 +31,27 @@ module.exports.login = async (req, res) => {
   }
 }
 
-module.exports.createUser = (req, res) => {}
+module.exports.signup = async (req, res) => {
+  const candidate = await User.findOne({ userName: req.body.userName })
+
+  if (candidate) {
+    res.status(409).json({ message: 'User with that name exists' })
+  } else {
+    const isMailReg = await User.findOne({ email: req.body.email })
+
+    if (isMailReg) {
+      res.status(409).json({ message: 'User with that email exists' })
+    } else {
+      const salt = bcrypt.genSaltSync(10)
+      const user = new User({
+        userName: req.body.userName,
+        email: req.body.email,
+        password: bcrypt.hashSync(req.body.password, salt)
+      })
+
+      await user.save()
+
+      res.status(201).json(user)
+    }
+  }
+}

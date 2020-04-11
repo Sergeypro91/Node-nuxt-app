@@ -31,6 +31,15 @@ export const actions = {
     }
   },
 
+  async signup({ commit, dispatch }, userFormData) {
+    try {
+      await this.$axios.$post('/api/auth/user/signup', userFormData)
+    } catch (e) {
+      commit('setError', e, { root: true })
+      throw e
+    }
+  },
+
   setToken({ commit }, token) {
     commit('setToken', token)
   },

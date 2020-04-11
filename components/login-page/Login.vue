@@ -158,7 +158,7 @@ export default {
           this.$store.dispatch('setSubmitStatus', 'ERROR')
         } else {
           const userFormData = {
-            login: this.userInfo.userName.toLowerCase(),
+            email: this.userInfo.userName.toLowerCase(),
             password: this.userInfo.password
           }
 
@@ -170,11 +170,11 @@ export default {
         }
       } catch (e) {
         this.$store.dispatch('setSubmitStatus', 'ERROR')
-
-        setTimeout(() => {
-          this.$store.dispatch('setSubmitStatus', null)
-        }, 2000)
       }
+
+      setTimeout(() => {
+        this.$store.dispatch('setSubmitStatus', null)
+      }, 3000)
     }
   }
 }
