@@ -46,12 +46,16 @@ module.exports.signup = async (req, res) => {
       const user = new User({
         userName: req.body.userName,
         email: req.body.email,
-        password: bcrypt.hashSync(req.body.password, salt)
+        password: bcrypt.hashSync(req.body.password, salt),
+        imageUrl: `/${req.file.filename}`
       })
 
-      await user.save()
-
-      res.status(201).json(user)
+      try {
+        await user.save()
+        res.status(201).json(user)
+      } catch (e) {
+        res.status(500).json(e)
+      }
     }
   }
 }

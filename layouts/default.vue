@@ -15,7 +15,7 @@
           />
         </svg>
         <div class="p">
-          Thanks for your submission!
+          All OK, go on!
         </div>
       </div>
       <div
@@ -49,7 +49,7 @@
           />
         </svg>
         <div class="p">
-          Sending...
+          Waiting...
         </div>
       </div>
     </div>

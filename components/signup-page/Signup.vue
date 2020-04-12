@@ -1,6 +1,10 @@
 <template>
   <div class="login-form">
-    <form class="login-form__wrapper" @submit.prevent="onSignup">
+    <form
+      enctype="multipart/form-data"
+      class="login-form__wrapper"
+      @submit.prevent="onSignup"
+    >
       <div class="login-form__head">
         <div class="h1 login-form__title">Sign up</div>
       </div>
@@ -128,6 +132,8 @@
         Passwords must be identical.
       </div>
 
+      <input ref="image" type="file" @change="selectFile" />
+
       <div class="btn btn_primary btn_full-width hover">
         <div class="btn__icon"></div>
         <button type="submit">Sign up</button>
@@ -146,7 +152,8 @@ export default {
         userName: '',
         email: '',
         password: '',
-        repeatPassword: ''
+        repeatPassword: '',
+        userImage: ''
       }
     }
   },
@@ -173,6 +180,10 @@ export default {
   },
 
   methods: {
+    selectFile() {
+      ;[this.userInfo.userImage] = this.$refs.image.files
+    },
+
     async onSignup() {
       try {
         this.$v.$touch()
@@ -183,7 +194,8 @@ export default {
           const userFormData = {
             userName: this.userInfo.userName.toLowerCase(),
             email: this.userInfo.email.toLowerCase(),
-            password: this.userInfo.password
+            password: this.userInfo.password,
+            image: this.userInfo.userImage
           }
 
           this.$store.dispatch('setSubmitStatus', 'PENDING')
@@ -194,6 +206,8 @@ export default {
           this.userInfo.email = ''
           this.userInfo.password = ''
           this.userInfo.repeatPassword = ''
+          this.userInfo.userImage = ''
+          this.$router.push('/')
         }
       } catch (e) {
         this.$store.dispatch('setSubmitStatus', 'ERROR')

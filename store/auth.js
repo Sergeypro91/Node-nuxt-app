@@ -31,9 +31,16 @@ export const actions = {
     }
   },
 
-  async signup({ commit, dispatch }, userFormData) {
+  async signup({ commit }, { userName, email, password, image }) {
     try {
-      await this.$axios.$post('/api/auth/user/signup', userFormData)
+      const fd = new FormData()
+
+      fd.append('userName', userName)
+      fd.append('email', email)
+      fd.append('password', password)
+      fd.append('image', image, image.name)
+
+      await this.$axios.$post('/api/auth/user/signup', fd)
     } catch (e) {
       commit('setError', e, { root: true })
       throw e
