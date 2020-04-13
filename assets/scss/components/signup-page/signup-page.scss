@@ -5,7 +5,39 @@
   align-items: center;
   .login-form {
     width: 100%;
-    max-width: 400px;
+    max-width: 550px;
     animation: fadeIn 1s;
+    .login-form__body {
+      display: flex;
+      .login-form__body-left {
+        margin-right: 15px;
+      }
+      .login-form__body-rigt {
+        flex: 1 50%;
+        margin-bottom: $half-margin;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $tableWidth) {
+  .signup-page {
+    .login-form {
+      .login-form__body {
+        flex-direction: column;
+        .login-form__body-left {
+          margin: 0;
+        }
+        .login-form__body-rigt {
+          min-height: 200px;
+          display: flex;
+          flex-direction: column;
+          margin: 0;
+          .upload {
+            flex: 1 100%;
+          }
+        }
+      }
+    }
   }
 }

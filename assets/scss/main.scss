@@ -233,8 +233,8 @@ footer {
 }
 
 .upload {
-  width: calc(400px / 2);
-  height: calc(400px / 2);
+  width: 100%;
+  height: 100%;
   .upload-label {
     width: 100%;
     height: 100%;
@@ -243,11 +243,22 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 24px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: $border-rad;
+      opacity: 0.5;
+      z-index: 0;
+    }
     .input__icon {
       position: relative;
-      width: 80px;
-      height: 80px;
+      flex: 1 50%;
+      width: 100%;
+      z-index: 1;
       svg {
         width: 60px;
         height: 60px;
@@ -255,6 +266,9 @@ footer {
     }
     .input__header {
       text-align: center;
+      padding: 0 $border-rad;
+      flex: 2 50%;
+      z-index: 1;
     }
   }
   input {
@@ -264,6 +278,7 @@ footer {
     height: 100%;
     padding: 0;
     cursor: pointer;
+    z-index: 2;
   }
   .p {
     margin: 0;
@@ -479,6 +494,25 @@ form {
     input,
     textarea {
       color: $font-color_main_black-theme;
+    }
+  }
+
+  .login-form {
+    .input__icon {
+      svg {
+        background: $input_black-theme;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  .login-form {
+    .upload {
+      .input__icon {
+        svg {
+          background: none;
+        }
+      }
     }
   }
 
