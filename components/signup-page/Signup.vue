@@ -132,7 +132,35 @@
         Passwords must be identical.
       </div>
 
-      <input ref="image" type="file" @change="selectFile" />
+      <div class="input upload hover" :class="{ hover__upload: ondragover }">
+        <label class="upload-label">
+          <div v-if="userInfo.userImage">
+            <img :src="userInfo.userImage" />
+            <div class="p">{{ userInfo.userImage.name }}</div>
+          </div>
+
+          <div class="input__icon">
+            <svg
+              class="icon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M18.944,11.112C18.507,7.67,15.56,5,12,5C9.244,5,6.85,6.611,5.757,9.15C3.609,9.792,2,11.82,2,14c0,2.757,2.243,5,5,5h3h1	h2h1h4c2.206,0,4-1.794,4-4C22,13.12,20.695,11.538,18.944,11.112z M13,14v3h-2v-3H8l4-5l4,5H13z"
+              />
+            </svg>
+          </div>
+
+          <div class="input__header">
+            <div v-if="!ondragover" class="p">
+              Press / Drag and drop image here.
+            </div>
+            <div v-else class="p">Drop File!</div>
+          </div>
+        </label>
+
+        <input ref="image" type="file" @change="selectFile" />
+      </div>
 
       <div class="btn btn_primary btn_full-width hover">
         <div class="btn__icon"></div>
@@ -153,9 +181,24 @@ export default {
         email: '',
         password: '',
         repeatPassword: '',
-        userImage: ''
-      }
+        userImage: null
+      },
+      ondragover: null
     }
+  },
+
+  mounted() {
+    /* eslint-disable */
+    ;(this.$refs.image.ondragover = (e) => {
+      this.ondragover = e.type
+
+      console.log(`Drag ON!`)
+    }),
+      (this.$refs.image.ondragleave = this.$refs.image.ondrop = () => {
+        this.ondragover = null
+
+        console.log(`Drag OFF!`)
+      })
   },
 
   validations: {
@@ -182,6 +225,7 @@ export default {
   methods: {
     selectFile() {
       ;[this.userInfo.userImage] = this.$refs.image.files
+      console.log(this.userInfo.userImage)
     },
 
     async onSignup() {
