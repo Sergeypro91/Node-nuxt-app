@@ -29,6 +29,17 @@ html {
   // }
 }
 
+// Nuxt page routs animations
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.5s;
+}
+
+.page-enter,
+.page-leave-active {
+  opacity: 0;
+}
+
 //Font
 .h0 {
   font-family: $mainFontBold;
