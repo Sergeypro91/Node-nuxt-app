@@ -43,12 +43,22 @@ module.exports.signup = async (req, res) => {
       res.status(409).json({ message: 'User with that email exists' })
     } else {
       const salt = bcrypt.genSaltSync(10)
-      const user = new User({
-        userName: req.body.userName,
-        email: req.body.email,
-        password: bcrypt.hashSync(req.body.password, salt),
-        imageUrl: `/${req.file.filename}`
-      })
+      let user = null
+
+      if (req.file) {
+        user = new User({
+          userName: req.body.userName,
+          email: req.body.email,
+          password: bcrypt.hashSync(req.body.password, salt),
+          imageUrl: `/${req.file.filename}`
+        })
+      } else {
+        user = new User({
+          userName: req.body.userName,
+          email: req.body.email,
+          password: bcrypt.hashSync(req.body.password, salt)
+        })
+      }
 
       try {
         await user.save()

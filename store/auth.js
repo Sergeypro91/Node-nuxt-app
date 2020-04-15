@@ -38,7 +38,9 @@ export const actions = {
       fd.append('userName', userName)
       fd.append('email', email)
       fd.append('password', password)
-      fd.append('image', image, image.name)
+      if (image) {
+        fd.append('image', image, image.name)
+      }
 
       await this.$axios.$post('/api/auth/user/signup', fd)
     } catch (e) {

@@ -217,7 +217,7 @@ export default {
         email: '',
         password: '',
         repeatPassword: '',
-        userImage: null
+        userImage: ''
       },
       ondragover: null,
       images: []

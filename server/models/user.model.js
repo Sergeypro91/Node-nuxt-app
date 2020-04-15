@@ -21,7 +21,10 @@ const userSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  imageUrl: String
+  imageUrl: {
+    type: String,
+    default: '/empty-user.png'
+  }
 })
 
 module.exports = model('users', userSchema)

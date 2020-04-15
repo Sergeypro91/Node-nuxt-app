@@ -32,7 +32,7 @@
           />
         </svg>
         <div class="p">
-          {{ this.$store.getters.error }}
+          {{ this.$store.getters.error.response.data.message }}
         </div>
       </div>
       <div
