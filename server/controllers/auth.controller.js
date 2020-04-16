@@ -80,15 +80,17 @@ module.exports.signup = async (req, res) => {
         await user.save()
         res.status(201).json(user)
 
-        await sharp(req.file.path)
-          .resize(256, 256)
-          .toFile(`./static/img/users/thumb_256/${req.file.filename}`)
-        await sharp(req.file.path)
-          .resize(100, 100)
-          .toFile(`./static/img/users/thumb_100/${req.file.filename}`)
-        await sharp(req.file.path)
-          .resize(50, 50)
-          .toFile(`./static/img/users/thumb_50/${req.file.filename}`)
+        if (req.file) {
+          await sharp(req.file.path)
+            .resize(256, 256)
+            .toFile(`./static/img/users/thumb_256/${req.file.filename}`)
+          await sharp(req.file.path)
+            .resize(100, 100)
+            .toFile(`./static/img/users/thumb_100/${req.file.filename}`)
+          await sharp(req.file.path)
+            .resize(50, 50)
+            .toFile(`./static/img/users/thumb_50/${req.file.filename}`)
+        }
       } catch (e) {
         res.status(500).json(e)
       }
