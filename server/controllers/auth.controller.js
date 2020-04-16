@@ -1,3 +1,5 @@
+const fs = require('fs')
+const sharp = require('sharp')
 const bcrypt = require('bcrypt-nodejs')
 const jwt = require('jsonwebtoken')
 const keys = require('../keys')
@@ -36,11 +38,25 @@ module.exports.signup = async (req, res) => {
 
   if (candidate) {
     res.status(409).json({ message: 'User with that name exists' })
+
+    if (req.file) {
+      fs.unlink(req.file.path, (err) => {
+        if (err) throw err
+        console.log('User image was deleted')
+      })
+    }
   } else {
     const isMailReg = await User.findOne({ email: req.body.email })
 
     if (isMailReg) {
       res.status(409).json({ message: 'User with that email exists' })
+
+      if (req.file) {
+        fs.unlink(req.file.path, (err) => {
+          if (err) throw err
+          console.log('User image was deleted')
+        })
+      }
     } else {
       const salt = bcrypt.genSaltSync(10)
       let user = null
@@ -63,6 +79,16 @@ module.exports.signup = async (req, res) => {
       try {
         await user.save()
         res.status(201).json(user)
+
+        await sharp(req.file.path)
+          .resize(256, 256)
+          .toFile(`./static/img/users/thumb_256/${req.file.filename}`)
+        await sharp(req.file.path)
+          .resize(100, 100)
+          .toFile(`./static/img/users/thumb_100/${req.file.filename}`)
+        await sharp(req.file.path)
+          .resize(50, 50)
+          .toFile(`./static/img/users/thumb_50/${req.file.filename}`)
       } catch (e) {
         res.status(500).json(e)
       }

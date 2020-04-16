@@ -33,7 +33,7 @@
               v-model.trim="$v.userInfo.userName.$model"
               type="text"
               placeholder="User name"
-              autocomplete="off"
+              autocomplete="name"
             />
           </div>
           <div
@@ -67,7 +67,7 @@
               v-model.trim="$v.userInfo.email.$model"
               type="text"
               placeholder="User email"
-              autocomplete="username"
+              autocomplete="email"
             />
           </div>
           <div v-if="!$v.userInfo.email.email" class="p_extra-small error">
@@ -129,7 +129,7 @@
               v-model.trim="$v.userInfo.repeatPassword.$model"
               type="password"
               placeholder="Repeat password"
-              autocomplete="new-password"
+              autocomplete="off"
             />
           </div>
           <div
@@ -197,9 +197,17 @@
       </div>
 
       <div class="login-form__footer">
-        <div class="btn btn_primary btn_full-width hover">
+        <div
+          class="btn btn_primary btn_full-width hover"
+          :class="{ disabled: this.$v.$invalid }"
+        >
           <div class="btn__icon"></div>
-          <button type="submit">Sign up</button>
+          <button v-if="this.$v.$invalid" disabled="disabled" type="submit">
+            Sign up
+          </button>
+          <button v-if="!this.$v.$invalid" type="submit">
+            Sign up
+          </button>
         </div>
       </div>
     </form>

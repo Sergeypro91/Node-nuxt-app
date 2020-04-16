@@ -348,6 +348,10 @@ form {
   }
 }
 
+.disabled {
+  opacity: 0.5;
+}
+
 .btn_gray {
   .btn__icon {
     svg {
