@@ -1,3 +1,4 @@
+const fs = require('fs')
 const bcrypt = require('bcrypt-nodejs')
 const jwt = require('jsonwebtoken')
 const keys = require('../keys')
@@ -36,11 +37,21 @@ module.exports.signup = async (req, res) => {
 
   if (candidate) {
     res.status(409).json({ message: 'User with that name exists' })
+
+    fs.unlink(req.file.path, (err) => {
+      if (err) throw err
+      console.log('User image was deleted')
+    })
   } else {
     const isMailReg = await User.findOne({ email: req.body.email })
 
     if (isMailReg) {
       res.status(409).json({ message: 'User with that email exists' })
+
+      fs.unlink(req.file.path, (err) => {
+        if (err) throw err
+        console.log('User image was deleted')
+      })
     } else {
       const salt = bcrypt.genSaltSync(10)
       let user = null
@@ -61,7 +72,7 @@ module.exports.signup = async (req, res) => {
       }
 
       try {
-        await user.save()
+        await user.save(req.file.filename)
         res.status(201).json(user)
       } catch (e) {
         res.status(500).json(e)
