@@ -23,6 +23,10 @@ export const mutations = {
 export const actions = {
   setSubmitStatus({ commit }, submitStatus) {
     commit('setSubmitStatus', submitStatus)
+  },
+
+  nuxtServerInit({ dispatch }) {
+    dispatch('auth/autoLogin')
   }
 }
 

@@ -27,7 +27,7 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [{ src: '~/plugins/Vuelidate' }],
+  plugins: [{ src: '~/plugins/Vuelidate' }, { src: '~/plugins/axios' }],
   /*
    ** Nuxt.js dev-modules
    */
@@ -50,7 +50,11 @@ module.exports = {
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: { baseURL: process.env.BASE_URL || 'http://localhost:3000' },
+
+  env: {
+    appName: 'NotesApp'
+  },
   /*
    ** Build configuration
    */
