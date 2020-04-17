@@ -3,6 +3,7 @@
 @import 'common';
 
 html {
+  overflow-y: scroll;
   font-size: $desktopFont;
   height: 100%;
   body {
@@ -129,7 +130,7 @@ html {
 // Page size structure
 
 .wrapper {
-  width: 100wh;
+  width: 100vw;
   max-width: 1340px;
   height: 100%;
   min-height: 100vh;

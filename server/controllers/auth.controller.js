@@ -81,15 +81,31 @@ module.exports.signup = async (req, res) => {
         res.status(201).json(user)
 
         if (req.file) {
-          await sharp(req.file.path)
-            .resize(256, 256)
-            .toFile(`./static/img/users/thumb_256/${req.file.filename}`)
-          await sharp(req.file.path)
-            .resize(100, 100)
-            .toFile(`./static/img/users/thumb_100/${req.file.filename}`)
-          await sharp(req.file.path)
-            .resize(50, 50)
-            .toFile(`./static/img/users/thumb_50/${req.file.filename}`)
+          const imageReduce = async (size) => {
+            await sharp(req.file.path)
+              .resize(size, size)
+              .toFile(
+                `./static/img/users/thumbJPG_${size}/${req.file.filename}`
+              )
+          }
+
+          const imageWebP = async (size) => {
+            await sharp(req.file.path)
+              .resize(size, size)
+              .webp({ quality: 80 })
+              .toFile(
+                `./static/img/users/thumbWebP_${size}/${req.file.filename
+                  .replace('.jpg', '.webp')
+                  .replace('.png', '.webp')}`
+              )
+          }
+
+          imageReduce(256)
+          imageReduce(100)
+          imageReduce(50)
+          imageWebP(256)
+          imageWebP(100)
+          imageWebP(50)
         }
       } catch (e) {
         res.status(500).json(e)
