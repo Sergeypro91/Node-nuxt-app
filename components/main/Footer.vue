@@ -39,7 +39,18 @@
         <div class="toggler" @click="toggleTheme">
           <div class="toggler-manipulator"></div>
         </div>
-        <div class="p_small">Toggler</div>
+        <div
+          v-if="this.$store.state.theme.toggler === 'light__theme'"
+          class="p_small"
+        >
+          Light
+        </div>
+        <div
+          v-if="this.$store.state.theme.toggler === 'darck__theme'"
+          class="p_small"
+        >
+          Darck
+        </div>
       </div>
       <div class="footer__social-networck">
         <a href="#" class="footer__social-networck-link">
@@ -82,22 +93,37 @@
 
 <script>
 export default {
-  computed: {
-    theme() {
-      return this.$store.state.theme.toggler
+  mounted() {
+    function getCookie(name) {
+      const value = `; ${document.cookie}`
+      const parts = value.split(`; ${name}=`)
+      if (parts.length === 2) {
+        return parts
+          .pop()
+          .split(';')
+          .shift()
+      }
+      return 'light__theme'
     }
+
+    document.body.classList.add(getCookie('theme'))
+
+    this.$store.dispatch('theme/toggleTheme', getCookie('theme'))
   },
 
   methods: {
     toggleTheme() {
       const el = document.body
+      const toglerState = this.$store.state.theme.toggler
+      const darck = 'darck__theme'
+      const light = 'light__theme'
 
-      this.$store.commit('theme/toggle')
-
-      if (this.$store.state.theme.toggler) {
-        el.classList.add('darck__theme')
-      } else {
-        el.classList.remove('darck__theme')
+      if (toglerState === light) {
+        el.classList.add(darck)
+        this.$store.dispatch('theme/toggleTheme', darck)
+      } else if (toglerState === darck) {
+        el.classList.remove(darck)
+        this.$store.dispatch('theme/toggleTheme', light)
       }
     }
   }

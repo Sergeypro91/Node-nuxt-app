@@ -136,7 +136,7 @@ export default {
 
   methods: {
     matchHeight() {
-      const margin = 15
+      const margin = 16
       const BPTwoColl = 1024
       const BPOneColl = 768
       const notesHeightArr = []

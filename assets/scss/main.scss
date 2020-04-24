@@ -30,17 +30,6 @@ html {
   // }
 }
 
-// Nuxt page routs animations
-.page-enter-active,
-.page-leave-active {
-  transition: opacity 0.5s;
-}
-
-.page-enter,
-.page-leave-active {
-  opacity: 0;
-}
-
 //Font
 .h0 {
   font-family: $mainFontBold;
@@ -150,7 +139,7 @@ header {
 
 .content-wrapper {
   width: 100%;
-  flex: 1;
+  min-height: calc(100vh - 80px - 60px);
 }
 
 footer {
@@ -351,6 +340,14 @@ form {
 
 .disabled {
   opacity: 0.5;
+  cursor: not-allowed !important;
+  button {
+    cursor: not-allowed;
+  }
+  &:hover {
+    box-shadow: none !important;
+    background: $accent-color !important;
+  }
 }
 
 .btn_gray {

@@ -1,5 +1,6 @@
 .login-page {
   min-height: calc(100vh - #{$header} - #{$footer});
+  height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -25,6 +26,9 @@
           flex-direction: column;
           justify-content: space-evenly;
           text-align: right;
+          a:hover {
+            text-decoration: underline;
+          }
           .p_small {
             color: $accent-color;
           }

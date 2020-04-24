@@ -67,9 +67,15 @@
         />
       </div>
 
-      <div class="btn btn_primary btn_full-width hover">
+      <div
+        class="btn btn_primary btn_full-width hover"
+        :class="{ disabled: this.$v.$invalid }"
+      >
         <div class="btn__icon"></div>
-        <button>Login</button>
+        <button v-if="this.$v.$invalid" disabled="disabled" type="submit">
+          Login
+        </button>
+        <button v-if="!this.$v.$invalid" type="submit">Login</button>
       </div>
 
       <div class="p_small login-form__text">
