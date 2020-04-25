@@ -4,7 +4,6 @@
   width: 100%;
   display: flex;
   flex-flow: column wrap;
-  margin-bottom: calc(#{$margin} + #{$half-margin});
   &:before,
   &:after {
     content: '';
@@ -198,7 +197,7 @@
   }
 
   .note:hover {
-    box-shadow: 0 30px 30px #b7b7b71a;
+    box-shadow: 0 30px 30px #b7b7b714;
   }
 
   .note__edit {
@@ -223,6 +222,9 @@
 }
 
 @media (min-width: $tableWidth) and (max-width: 1024px) {
+  .notes {
+    margin-bottom: calc(#{$margin} + #{$half-margin});
+  }
   .note {
     width: calc((100% - #{$half-margin}) / 2);
     &:nth-child(2n + 1) {
