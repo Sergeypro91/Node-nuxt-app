@@ -46,6 +46,7 @@ module.exports = {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/auth',
     '@nuxtjs/pwa'
   ],
   styleResources: {
@@ -61,7 +62,15 @@ module.exports = {
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: { baseURL: process.env.BASE_URL || 'http://localhost:3000' },
+  axios: {
+    baseURL: process.env.BASE_URL,
+    proxy: true
+  },
+
+  proxy: {
+    '/api/': 'oauth.vk.com',
+    '/api2/': 'api.vk.com'
+  },
 
   env: {
     appName: 'NotesApp'

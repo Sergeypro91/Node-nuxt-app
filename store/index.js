@@ -26,7 +26,7 @@ export const actions = {
   },
 
   nuxtServerInit({ dispatch }) {
-    dispatch('auth/autoLogin')
+    dispatch('auth2/autoLogin')
   }
 }
 

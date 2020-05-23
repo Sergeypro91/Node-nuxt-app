@@ -113,3 +113,22 @@ module.exports.signup = async (req, res) => {
     }
   }
 }
+
+module.exports.findUser = async (req, res) => {
+  const candidate = await User.findOne({ email: req.body.email })
+
+  if (candidate) {
+    const isPasswordCorrect = bcrypt.compareSync(
+      req.body.password,
+      candidate.password
+    )
+
+    if (isPasswordCorrect) {
+      res.json({ userStatus: 'all ok' })
+    } else {
+      res.status(401).json({ message: 'Password does not correct' })
+    }
+  } else {
+    res.json({ userStatus: 'User not found' })
+  }
+}

@@ -4,7 +4,6 @@ const userSchema = new Schema({
   userName: {
     type: String,
     minLength: 6,
-    unique: true,
     required: true
   },
   email: {
@@ -24,6 +23,10 @@ const userSchema = new Schema({
   imageUrl: {
     type: String,
     default: '/empty-user.png'
+  },
+  notes: {
+    type: Array,
+    default: []
   }
 })
 

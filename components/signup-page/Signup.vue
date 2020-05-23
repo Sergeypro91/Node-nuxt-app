@@ -313,8 +313,9 @@ export default {
           }
 
           this.$store.dispatch('setSubmitStatus', 'PENDING')
+          console.log(userFormData)
 
-          await this.$store.dispatch('auth/signup', userFormData)
+          await this.$store.dispatch('auth2/signup', userFormData)
           this.$store.dispatch('setSubmitStatus', 'OK')
           this.userInfo.userName = ''
           this.userInfo.email = ''

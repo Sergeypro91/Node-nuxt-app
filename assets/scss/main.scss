@@ -135,6 +135,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 1;
 }
 
 .content-wrapper {
@@ -446,6 +447,7 @@ form {
   width: 100%;
   display: flex;
   justify-content: center;
+  z-index: 0;
   .message-ok,
   .message-error,
   .message-pending {

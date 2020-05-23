@@ -7,8 +7,12 @@ export default {
   middleware: ['loged-auth'],
 
   beforeCreate() {
-    this.$store.dispatch('auth/logout')
-    this.$router.push('/')
+    try {
+      this.$store.dispatch('auth2/logout')
+      this.$router.push('/')
+    } catch (e) {
+      console.log(e)
+    }
   }
 }
 </script>
