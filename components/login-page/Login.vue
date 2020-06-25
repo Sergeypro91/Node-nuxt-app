@@ -134,18 +134,9 @@
 </template>
 
 <script>
-import axios from 'axios'
 import { required, email, minLength } from 'vuelidate/lib/validators'
 
 export default {
-  async asyncData() {
-    const { data } = await axios.get(
-      'https://jsonplaceholder.typicode.com/posts/1'
-    )
-
-    return { title: data.body }
-  },
-
   data() {
     return {
       userInfo: {
@@ -164,7 +155,6 @@ export default {
     } else if (this.urlString.search('thisIsFbRes') > 0) {
       this.fbLogin()
     } else if (this.urlString.search('thisIsGRes') > 0) {
-      // this.gLogin()
       this.gLogin()
     }
   },

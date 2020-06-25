@@ -5,7 +5,8 @@ import Cookies from 'js-cookie'
 import jwtDecode from 'jwt-decode'
 
 export const state = () => ({
-  token: null
+  token: null,
+  user: null
 })
 
 export const mutations = {
@@ -31,6 +32,7 @@ export const actions = {
       )
 
       dispatch('setToken', token)
+      Cookies.set('currentUser', userFormData.email)
     } catch (e) {
       commit('setError', e, { root: true })
       throw e
@@ -195,6 +197,7 @@ export const actions = {
     this.$axios.setToken(false)
     commit('clearToken')
     Cookies.remove('jwt-token')
+    Cookies.remove('currentUser')
   },
 
   autoLogin({ dispatch }) {

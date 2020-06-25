@@ -7,7 +7,11 @@
       <div class="new-note__header">
         <div class="new-note__title">
           <div class="input imput_without-icon hover">
-            <input type="text" placeholder="Enter note title ..." />
+            <input
+              v-model="newNote.title"
+              type="text"
+              placeholder="Enter note title ..."
+            />
           </div>
         </div>
         <div class="new-note__type">
@@ -34,7 +38,10 @@
       <div class="new-note__footer">
         <div class="new-note__description">
           <div class="input imput_without-icon hover">
-            <textarea placeholder="Enter note description ..." />
+            <textarea
+              v-model="newNote.description"
+              placeholder="Enter note description ..."
+            />
           </div>
         </div>
         <div class="new-note__ui">
@@ -50,7 +57,7 @@
                 />
               </svg>
             </div>
-            <button>new note</button>
+            <button @click="createNote">new note</button>
           </div>
           <div class="btn btn_gray" @click="showNN">
             <div class="btn__icon">
@@ -73,9 +80,37 @@
 
 <script>
 export default {
+  data() {
+    return {
+      newNote: {
+        title: null,
+        description: null,
+        publishTime: null
+      }
+    }
+  },
+
   methods: {
     showNN() {
       this.$store.commit('ui/nn')
+    },
+
+    async createNote() {
+      const note = {
+        title: this.newNote.title,
+        description: this.newNote.description,
+        author: {
+          name: 'Sergeyprostoas',
+          img: '~/static/img/users/user1.jpg'
+        },
+        publishTime: new Date(Date.now()).toLocaleString()
+      }
+
+      await this.$store.commit('notes/addNote', note)
+
+      this.newNote.title = null
+      this.newNote.description = null
+      this.newNote.publishTime = null
     }
   }
 }

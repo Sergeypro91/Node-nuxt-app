@@ -75,5 +75,9 @@ export const state = () => ({
 export const mutations = {
   notesHeight(state, i) {
     state.notesHeight = i
+  },
+
+  addNote(state, note) {
+    state.notes.push(note)
   }
 }

@@ -7,7 +7,7 @@
         </div>
         <div class="note__type-change">
           <div class="note__type-change_standart"></div>
-          <div class="note__type-change_priority"></div>
+          <div class="note__type-change_priority" @click="getUserData"></div>
           <div class="note__type-change_important"></div>
           <div class="note__close">
             <svg
@@ -136,6 +136,7 @@ export default {
 
   methods: {
     matchHeight() {
+      console.log(this.notesCount)
       const margin = 16
       const BPTwoColl = 1024
       const BPOneColl = 768
@@ -171,6 +172,12 @@ export default {
       } else {
         this.$store.commit('notes/notesHeight', bigestCollHeight(1, margin))
       }
+    },
+
+    async getUserData() {
+      const userData = await this.$store.dispatch('user/setUserData')
+
+      console.log(userData)
     }
   }
 }
