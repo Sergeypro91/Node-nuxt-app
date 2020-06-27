@@ -15,7 +15,7 @@
               />
             </svg>
           </div>
-          <input type="text" placeholder="Find your note" />
+          <input v-model="search" type="text" placeholder="Find your note" />
         </div>
       </div>
       <div class="search-notes__filter">
@@ -46,3 +46,19 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      search: ''
+    }
+  },
+
+  watch: {
+    search(val) {
+      this.$root.$emit('search', val)
+    }
+  }
+}
+</script>

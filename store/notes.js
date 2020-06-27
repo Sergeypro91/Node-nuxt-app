@@ -3,19 +3,23 @@
 
 export const state = () => ({
   notesHeight: null,
+  notesCounter: 6,
   notes: [
     {
-      title: 'Some note title for test notes respons',
+      noteId: 1,
+      title: 'Some note title for test notes respons1',
       description:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quos ducimus pariatur quo eius numquam sapiente doloremque asperiores placeat. Ea accusamus architecto cumque nisi qui officiis? Cumque temporibus nulla iste alias dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quos ducimus pariatur quo eius numquam sapiente doloremque asperiores placeat. Ea accusamus architecto cumque nisi qui officiis? Cumque temporibus nulla iste alias dolorum.',
       author: {
         name: 'Sergeyprostoas',
         img: '~/static/img/users/user1.jpg'
       },
-      publishTime: new Date(Date.now()).toLocaleString()
+      publishTime: new Date(Date.now()).toLocaleString(),
+      notePriority: 'standart'
     },
 
     {
+      noteId: 2,
       title: 'Some note title for test notes respons',
       description:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quos ducimus pariatur quo eius numquam sapiente doloremque asperiores placeat. Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quos ducimus pariatur quo eius numquam sapiente doloremque asperiores placeat.Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quos ducimus pariatur quo eius numquam sapiente doloremque asperiores placeat. Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quos ducimus pariatur quo eius numquam sapiente doloremque asperiores placeat.',
@@ -23,10 +27,12 @@ export const state = () => ({
         name: 'Sergeyprostoas',
         img: '~/static/img/users/user1.jpg'
       },
-      publishTime: new Date(Date.now()).toLocaleString()
+      publishTime: new Date(Date.now()).toLocaleString(),
+      notePriority: 'standart'
     },
 
     {
+      noteId: 3,
       title: 'Some note title for test notes respons',
       description:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quos ducimus pariatur quo eius numquam sapiente doloremque asperiores placeat.',
@@ -34,10 +40,12 @@ export const state = () => ({
         name: 'Sergeyprostoas',
         img: '~/static/img/users/user1.jpg'
       },
-      publishTime: new Date(Date.now()).toLocaleString()
+      publishTime: new Date(Date.now()).toLocaleString(),
+      notePriority: 'standart'
     },
 
     {
+      noteId: 4,
       title: 'Some note title for test notes respons',
       description:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quos ducimus pariatur quo eius numquam sapiente doloremque asperiores placeat. Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quos ducimus pariatur quo eius numquam sapiente doloremque asperiores placeat.Lorem ipsum dolor sit amet consectetur adipisicing elit.',
@@ -45,10 +53,12 @@ export const state = () => ({
         name: 'Sergeyprostoas',
         img: '~/static/img/users/user1.jpg'
       },
-      publishTime: new Date(Date.now()).toLocaleString()
+      publishTime: new Date(Date.now()).toLocaleString(),
+      notePriority: 'standart'
     },
 
     {
+      noteId: 5,
       title: 'Some note title for test notes respons',
       description:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quos ducimus pariatur quo eius numquam sapiente doloremque asperiores placeat. Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quos ducimus pariatur quo eius numquam sapiente doloremque asperiores placeat.',
@@ -56,18 +66,21 @@ export const state = () => ({
         name: 'Sergeyprostoas',
         img: '~/static/img/users/user1.jpg'
       },
-      publishTime: new Date(Date.now()).toLocaleString()
+      publishTime: new Date(Date.now()).toLocaleString(),
+      notePriority: 'standart'
     },
 
     {
-      title: 'Some note title for test notes respons',
+      noteId: 6,
+      title: 'Some note title for test notes respons6',
       description:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quos ducimus pariatur quo eius numquam sapiente doloremque asperiores placeat. Ea accusamus architecto cumque nisi qui officiis? Cumque temporibus nulla iste alias dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quos ducimus pariatur quo eius numquam sapiente doloremque asperiores placeat. Ea accusamus architecto cumque nisi qui officiis? Cumque temporibus nulla iste alias dolorum.',
       author: {
         name: 'Sergeyprostoas',
         img: '~/static/img/users/user1.jpg'
       },
-      publishTime: new Date(Date.now()).toLocaleString()
+      publishTime: new Date(Date.now()).toLocaleString(),
+      notePriority: 'standart'
     }
   ]
 })
@@ -78,6 +91,27 @@ export const mutations = {
   },
 
   addNote(state, note) {
-    state.notes.push(note)
+    state.notesCounter += 1
+    state.notes.unshift(note)
+  },
+
+  changePrioryty(state, data) {
+    const index = state.notes.findIndex((obj) => obj.noteId === data.index)
+    state.notes[index].notePriority = data.priorityType
+  },
+
+  destroyNote(state, id) {
+    const index = state.notes.findIndex((obj) => obj.noteId === id)
+    state.notes.splice([index], 1)
+  }
+}
+
+export const actions = {
+  changePrioryty({ commit }, data) {
+    commit('changePrioryty', data)
+  },
+
+  destroyNote({ commit }, id) {
+    commit('destroyNote', id)
   }
 }

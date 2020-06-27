@@ -1,15 +1,37 @@
 <template>
   <div ref="notes" class="notes" :style="{ height: notesHeight + 'px' }">
-    <div v-for="note in notes" :key="note.idNote" ref="note" class="note">
+    <div
+      v-for="note in notesFiltered"
+      :key="note.idNote"
+      ref="note"
+      class="note"
+      :class="{
+        note__standart: note.notePriority == 'standart',
+        note__priority: note.notePriority == 'priority',
+        note__important: note.notePriority == 'important'
+      }"
+    >
       <div class="note__header">
         <div class="note__title">
           <div class="h2">{{ note.title }}</div>
         </div>
         <div class="note__type-change">
-          <div class="note__type-change_standart"></div>
-          <div class="note__type-change_priority" @click="getUserData"></div>
-          <div class="note__type-change_important"></div>
-          <div class="note__close">
+          <div
+            v-if="note.notePriority !== 'standart'"
+            class="note__type-change_standart"
+            @click="determinePrioryty(note.noteId, 'standart')"
+          ></div>
+          <div
+            v-if="note.notePriority !== 'priority'"
+            class="note__type-change_priority"
+            @click="determinePrioryty(note.noteId, 'priority')"
+          ></div>
+          <div
+            v-if="note.notePriority !== 'important'"
+            class="note__type-change_important"
+            @click="determinePrioryty(note.noteId, 'important')"
+          ></div>
+          <div class="note__close" @click="deleteNote(note.noteId)">
             <svg
               class="icon"
               xmlns="http://www.w3.org/2000/svg"
@@ -115,9 +137,22 @@
 
 <script>
 export default {
+  data() {
+    return {
+      search: null,
+      notes: this.$store.state.notes.notes
+    }
+  },
+
   computed: {
-    notes() {
-      return this.$store.state.notes.notes
+    notesFiltered() {
+      if (!this.search) {
+        return this.$store.state.notes.notes
+      }
+
+      return this.notes.filter((obj) => {
+        return obj.title.toLowerCase().includes(this.search)
+      })
     },
 
     notesHeight() {
@@ -128,6 +163,13 @@ export default {
   mounted() {
     window.addEventListener('resize', this.matchHeight)
     this.matchHeight()
+    this.$root.$on('createNote', () => {
+      this.matchHeight()
+    })
+    this.$root.$on('search', (val) => {
+      this.search = val.trim().toLowerCase()
+      // this.matchHeight()
+    })
   },
 
   destroyed() {
@@ -136,7 +178,6 @@ export default {
 
   methods: {
     matchHeight() {
-      console.log(this.notesCount)
       const margin = 16
       const BPTwoColl = 1024
       const BPOneColl = 768
@@ -174,10 +215,18 @@ export default {
       }
     },
 
-    async getUserData() {
-      const userData = await this.$store.dispatch('user/setUserData')
+    determinePrioryty(id, type) {
+      const data = {
+        index: id,
+        priorityType: type
+      }
+      this.$store.dispatch('notes/changePrioryty', data)
+    },
 
-      console.log(userData)
+    async deleteNote(id) {
+      await this.$store.dispatch('notes/destroyNote', id)
+
+      this.matchHeight()
     }
   }
 }
