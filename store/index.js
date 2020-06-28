@@ -31,7 +31,9 @@ export const actions = {
 }
 
 export const getters = {
+  isAuthenticated: (state) => Boolean(state.auth2.token),
+  token: (state) => state.auth2.token,
+  notes: (state) => state.notes.notes,
   error: (state) => state.error,
-
   submitStatus: (state) => state.submitStatus
 }

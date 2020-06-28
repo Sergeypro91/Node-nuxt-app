@@ -8,10 +8,7 @@
       </n-link>
     </div>
     <nav class="header__menu">
-      <ul
-        v-if="$store.getters['auth2/isAuthenticated']"
-        class="header__menu-ul"
-      >
+      <ul v-if="$store.getters.isAuthenticated" class="header__menu-ul">
         <li class="header__menu-li">
           <n-link to="/notes" class="header__menu-link">
             <svg

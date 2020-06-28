@@ -62,8 +62,13 @@ export default {
     return {
       showEditNote: false,
       noteId: 0,
-      notes: this.$store.state.notes.notes,
       note: null
+    }
+  },
+
+  computed: {
+    notes() {
+      return this.$store.getters.notes
     }
   },
 
