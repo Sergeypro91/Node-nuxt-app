@@ -13,7 +13,7 @@ export default {
   components: { Login, Slogan },
 
   mounted() {
-    if (this.$store.getters.isAuthenticated) {
+    if (this.$store.getters['auth2/isAuthenticated']) {
       this.$router.push('/notes')
     }
   }

@@ -115,3 +115,7 @@ export const actions = {
     commit('destroyNote', id)
   }
 }
+
+export const getters = {
+  notes: (state) => state.notes
+}

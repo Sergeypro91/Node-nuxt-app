@@ -68,7 +68,7 @@ export default {
 
   computed: {
     notes() {
-      return this.$store.getters.notes
+      return this.$store.getters['notes/notes']
     }
   },
 

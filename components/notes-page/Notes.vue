@@ -91,7 +91,7 @@ export default {
       notesHeightCount: [],
       refsNote: null,
       search: null,
-      notes: this.$store.getters.notes,
+      notes: this.$store.getters['notes/notes'],
       priorityFilter: null,
       personeFilter: null
     }

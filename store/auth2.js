@@ -216,6 +216,11 @@ export const actions = {
   }
 }
 
+export const getters = {
+  isAuthenticated: (state) => Boolean(state.token),
+  token: (state) => state.token
+}
+
 const isJWTValid = (token) => {
   if (!token) {
     return false
