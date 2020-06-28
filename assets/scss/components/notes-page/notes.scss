@@ -122,15 +122,6 @@
     }
   }
 
-  .note__body {
-    .p {
-      overflow: hidden;
-      display: -webkit-box;
-      -webkit-line-clamp: 10;
-      -webkit-box-orient: vertical;
-    }
-  }
-
   .note__footer {
     display: flex;
     justify-content: space-between;
@@ -162,51 +153,6 @@
       margin: 0;
       color: $font-color_main-transparent_white-theme;
     }
-  }
-
-  .note__edit {
-    display: none;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 100%;
-    background: rgba($bg_white-theme, 0.8);
-    backdrop-filter: blur(2px);
-    z-index: 999;
-    transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
-    .note__edit-wrapper {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      width: 100%;
-      max-width: 500px;
-      .note__edit-header {
-        text-align: center;
-        .h1 {
-          font-family: $mainFontBold;
-        }
-      }
-      .note__edit-footer {
-        display: flex;
-        justify-content: space-between;
-        .btn:nth-child(2n) {
-          display: block;
-          svg {
-            width: 24px;
-            height: 24px;
-            transform: rotate(45deg);
-          }
-        }
-      }
-    }
-  }
-
-  .note__edit-active {
-    display: flex;
-    left: 0;
   }
 }
 

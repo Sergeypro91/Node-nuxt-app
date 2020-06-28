@@ -15,7 +15,7 @@ export const state = () => ({
         img: '~/static/img/users/user1.jpg'
       },
       publishTime: new Date(Date.now()).toLocaleString(),
-      notePriority: 'standart'
+      notePriority: 'priority'
     },
 
     {
@@ -28,7 +28,7 @@ export const state = () => ({
         img: '~/static/img/users/user1.jpg'
       },
       publishTime: new Date(Date.now()).toLocaleString(),
-      notePriority: 'standart'
+      notePriority: 'important'
     },
 
     {
@@ -41,7 +41,7 @@ export const state = () => ({
         img: '~/static/img/users/user1.jpg'
       },
       publishTime: new Date(Date.now()).toLocaleString(),
-      notePriority: 'standart'
+      notePriority: 'priority'
     },
 
     {
@@ -67,7 +67,7 @@ export const state = () => ({
         img: '~/static/img/users/user1.jpg'
       },
       publishTime: new Date(Date.now()).toLocaleString(),
-      notePriority: 'standart'
+      notePriority: 'important'
     },
 
     {

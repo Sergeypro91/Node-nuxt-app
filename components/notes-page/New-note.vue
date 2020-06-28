@@ -149,7 +149,6 @@ export default {
       this.newNote.title = null
       this.newNote.description = null
       this.newNote.notePriority = 'standart'
-      this.$root.$emit('createNote')
     }
   }
 }

@@ -13,7 +13,7 @@
     >
       <div class="note__header">
         <div class="note__title">
-          <div class="h2">{{ note.title }}</div>
+          <div class="h2">{{ note.title.substring(0, 50) }}</div>
         </div>
         <div class="note__type-change">
           <div
@@ -45,7 +45,10 @@
         </div>
       </div>
       <div class="note__body">
-        <div class="p">{{ note.description }}</div>
+        <div class="p">
+          {{ note.description.substring(0, 300) }}
+          <span v-if="note.description.length > 300">...</span>
+        </div>
       </div>
       <div class="note__footer">
         <div class="note__auhtor">
@@ -57,7 +60,7 @@
             <div class="p_extra-small">{{ note.publishTime }}</div>
           </div>
         </div>
-        <div class="btn btn_gray">
+        <div class="btn btn_gray" @click="showEdit(note.noteId)">
           <div class="btn__icon">
             <svg
               class="icon"
@@ -76,62 +79,8 @@
           </div>
         </div>
       </div>
-      <div class="note__edit">
-        <div class="note__edit-wrapper">
-          <div class="note__edit-header">
-            <div class="h1">Edit note</div>
-          </div>
-          <div class="note__edit-body">
-            <div class="input imput_without-icon hover">
-              <input
-                v-model="note.title"
-                type="text"
-                placeholder="Enter note title ..."
-              />
-            </div>
-            <div class="input imput_without-icon hover">
-              <textarea
-                v-model="note.description"
-                placeholder="Enter note description ..."
-              />
-            </div>
-          </div>
-          <div class="note__edit-footer">
-            <div class="btn btn_primary hover">
-              <div class="btn__icon">
-                <svg
-                  class="icon icon_white"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    transform="rotate(45.001 16.357 4.656)"
-                    d="M14.235 3.039H18.478V6.273H14.235z"
-                  />
-                  <path
-                    d="M4 14L4 17 7 17 15.299 8.713 12.299 5.713zM4 20H20V22H4z"
-                  />
-                </svg>
-              </div>
-              <button>edit</button>
-            </div>
-            <div class="btn btn_gray">
-              <div class="btn__icon">
-                <svg
-                  class="icon icon_white"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M19 11L13 11 13 5 11 5 11 11 5 11 5 13 11 13 11 19 13 19 13 13 19 13z"
-                  />
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
+    <div style="position: absolute; display: none">{{ matchHeight }}</div>
   </div>
 </template>
 
@@ -139,6 +88,8 @@
 export default {
   data() {
     return {
+      notesHeightCount: [],
+      refsNote: null,
       search: null,
       notes: this.$store.state.notes.notes,
       priorityFilter: null,
@@ -195,70 +146,83 @@ export default {
 
     notesHeight() {
       return this.$store.state.notes.notesHeight
-    }
-  },
+    },
 
-  mounted() {
-    window.addEventListener('resize', this.matchHeight)
-    this.matchHeight()
-    this.$root.$on('createNote', () => {
-      this.matchHeight()
-    })
-    this.$root.$on('search', (val) => {
-      this.search = val.trim().toLowerCase()
-      this.matchHeight()
-    })
-    this.$root.$on('priorityFilter', (val) => {
-      this.priorityFilter = val
-      this.matchHeight()
-    })
-    this.$root.$on('personeFilter', (val) => {
-      this.personeFilter = val
-      this.matchHeight()
-    })
-  },
-
-  destroyed() {
-    window.removeEventListener('resize', this.matchHeight)
-  },
-
-  methods: {
     matchHeight() {
       const margin = 16
       const BPTwoColl = 1024
       const BPOneColl = 768
       const notesHeightArr = []
 
-      this.$refs.note.forEach((item, i, arr) => {
-        notesHeightArr.push(this.$refs.note[i].clientHeight)
-      })
+      if (this.refsNote) {
+        this.refsNote.forEach((item, i, arr) => {
+          notesHeightArr.push(this.refsNote[i].clientHeight)
+        })
 
-      const bigestCollHeight = (CollCount, numb) => {
-        const newArr = []
+        const bigestCollHeight = (CollCount, numb) => {
+          const newArr = []
 
-        for (let i = 0; i < CollCount; i += 1) {
-          newArr.push(
-            notesHeightArr
-              .filter((value, index, Arr) => {
-                return index % CollCount === i
-              })
-              .reduce((a, b) => a + b + numb, 0)
-          )
+          for (let i = 0; i < CollCount; i += 1) {
+            newArr.push(
+              notesHeightArr
+                .filter((value, index, Arr) => {
+                  return index % CollCount === i
+                })
+                .reduce((a, b) => a + b + numb, 0)
+            )
+          }
+
+          return Math.max.apply(null, newArr)
         }
 
-        return Math.max.apply(null, newArr)
+        if (window.innerWidth > BPTwoColl) {
+          this.$store.commit('notes/notesHeight', bigestCollHeight(3, margin))
+        } else if (
+          window.innerWidth <= BPTwoColl &&
+          !(window.innerWidth < BPOneColl)
+        ) {
+          this.$store.commit('notes/notesHeight', bigestCollHeight(2, margin))
+        } else {
+          this.$store.commit('notes/notesHeight', bigestCollHeight(1, margin))
+        }
+
+        this.refsNote.forEach((item, i, arr) => {
+          this.notesHeightCount.push(this.refsNote[i].clientHeight)
+        })
       }
 
-      if (window.innerWidth > BPTwoColl) {
-        this.$store.commit('notes/notesHeight', bigestCollHeight(3, margin))
-      } else if (
-        window.innerWidth <= BPTwoColl &&
-        !(window.innerWidth < BPOneColl)
-      ) {
-        this.$store.commit('notes/notesHeight', bigestCollHeight(2, margin))
-      } else {
-        this.$store.commit('notes/notesHeight', bigestCollHeight(1, margin))
-      }
+      return true
+    }
+  },
+
+  mounted() {
+    window.addEventListener('resize', this.matchWidth)
+    this.matchWidth()
+    // this.$root.$on('createNote', () => {})
+    this.$root.$on('search', (val) => {
+      this.search = val.trim().toLowerCase()
+    })
+    this.$root.$on('priorityFilter', (val) => {
+      this.priorityFilter = val
+    })
+    this.$root.$on('personeFilter', (val) => {
+      this.personeFilter = val
+    })
+
+    this.refsNote = this.$refs.note
+  },
+
+  destroyed() {
+    window.removeEventListener('resize', this.matchWidth)
+  },
+
+  methods: {
+    matchWidth() {
+      this.notesHeightCount = []
+
+      this.$refs.note.forEach((item, i, arr) => {
+        this.notesHeightCount.push(this.$refs.note[i].clientHeight)
+      })
     },
 
     determinePrioryty(id, type) {
@@ -271,8 +235,10 @@ export default {
 
     async deleteNote(id) {
       await this.$store.dispatch('notes/destroyNote', id)
+    },
 
-      this.matchHeight()
+    showEdit(id) {
+      this.$root.$emit('showEdit', id)
     }
   }
 }

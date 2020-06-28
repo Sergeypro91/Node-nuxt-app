@@ -3,6 +3,7 @@
     <NewNote />
     <SearchNotes />
     <Notes />
+    <NoteEdit />
     <div class="nno" @click="showNN">
       <div class="btn btn_primary hover">
         <div class="btn__icon">
@@ -26,9 +27,10 @@
 import NewNote from '~/components/notes-page/New-note'
 import SearchNotes from '~/components/notes-page/Search-notes'
 import Notes from '~/components/notes-page/Notes'
+import NoteEdit from '~/components/notes-page/NoteEdit'
 
 export default {
-  components: { NewNote, SearchNotes, Notes },
+  components: { NewNote, SearchNotes, Notes, NoteEdit },
 
   middleware: ['loged-auth'],
 
