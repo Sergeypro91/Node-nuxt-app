@@ -140,19 +140,57 @@ export default {
   data() {
     return {
       search: null,
-      notes: this.$store.state.notes.notes
+      notes: this.$store.state.notes.notes,
+      priorityFilter: null,
+      personeFilter: null
     }
   },
 
   computed: {
     notesFiltered() {
-      if (!this.search) {
-        return this.$store.state.notes.notes
+      if (this.search) {
+        return this.notes.filter((obj) => {
+          if (
+            obj.title.toLowerCase().includes(this.search) ||
+            obj.description.toLowerCase().includes(this.search)
+          ) {
+            return true
+          }
+          return false
+        })
       }
 
-      return this.notes.filter((obj) => {
-        return obj.title.toLowerCase().includes(this.search)
-      })
+      if (this.priorityFilter) {
+        const arr = []
+
+        this.notes
+          .filter((obj) => {
+            return obj.notePriority === 'important'
+          })
+          .forEach((e) => {
+            arr.push(e)
+          })
+
+        this.notes
+          .filter((obj) => {
+            return obj.notePriority === 'priority'
+          })
+          .forEach((e) => {
+            arr.push(e)
+          })
+
+        this.notes
+          .filter((obj) => {
+            return obj.notePriority === 'standart'
+          })
+          .forEach((e) => {
+            arr.push(e)
+          })
+
+        return arr
+      }
+
+      return this.$store.state.notes.notes
     },
 
     notesHeight() {
@@ -168,7 +206,15 @@ export default {
     })
     this.$root.$on('search', (val) => {
       this.search = val.trim().toLowerCase()
-      // this.matchHeight()
+      this.matchHeight()
+    })
+    this.$root.$on('priorityFilter', (val) => {
+      this.priorityFilter = val
+      this.matchHeight()
+    })
+    this.$root.$on('personeFilter', (val) => {
+      this.personeFilter = val
+      this.matchHeight()
     })
   },
 

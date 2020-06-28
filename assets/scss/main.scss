@@ -174,6 +174,9 @@ footer {
     width: 36px;
     height: 36px;
   }
+  &.icon__active {
+    fill: $accent-color !important;
+  }
 }
 
 //Input

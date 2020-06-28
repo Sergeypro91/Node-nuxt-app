@@ -49,6 +49,12 @@
   }
 }
 
+.search-notes__title {
+  .p {
+    margin: 0;
+  }
+}
+
 // DARCK THEME
 
 .darck__theme {
@@ -76,6 +82,10 @@
   }
 
   .search-notes__header {
+    display: none;
+  }
+
+  .search-notes__title {
     display: none;
   }
 }
