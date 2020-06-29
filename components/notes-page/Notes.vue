@@ -233,8 +233,8 @@ export default {
       this.$store.dispatch('notes/changePrioryty', data)
     },
 
-    async deleteNote(id) {
-      await this.$store.dispatch('notes/destroyNote', id)
+    deleteNote(id) {
+      this.$root.$emit('deleteNote', id)
     },
 
     showEdit(id) {

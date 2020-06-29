@@ -4,6 +4,7 @@
     <SearchNotes />
     <Notes />
     <NoteEdit />
+    <NoteDelWin />
     <div class="nno" @click="showNN">
       <div class="btn btn_primary hover">
         <div class="btn__icon">
@@ -27,10 +28,11 @@
 import NewNote from '~/components/notes-page/New-note'
 import SearchNotes from '~/components/notes-page/Search-notes'
 import Notes from '~/components/notes-page/Notes'
-import NoteEdit from '~/components/notes-page/NoteEdit'
+import NoteEdit from '~/components/notes-page/Note-edit'
+import NoteDelWin from '~/components/notes-page/Note-delete-window'
 
 export default {
-  components: { NewNote, SearchNotes, Notes, NoteEdit },
+  components: { NewNote, SearchNotes, Notes, NoteEdit, NoteDelWin },
 
   middleware: ['loged-auth'],
 

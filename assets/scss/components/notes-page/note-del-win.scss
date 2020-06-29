@@ -1,0 +1,67 @@
+.note__del-wrapper {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $bg_transparent_white-theme;
+  backdrop-filter: blur(2px);
+  z-index: 999;
+  .note-del-win {
+    max-width: 380px;
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    margin: $half-margin;
+    background: $input_white-theme;
+    border-radius: 5px;
+    .note-del-win__header {
+      text-align: center;
+      padding: $half-margin;
+    }
+
+    .note-del-win__footer {
+      width: 100%;
+      display: flex;
+      .note-del-win__footer-botton {
+        flex: 1 50%;
+        text-align: center;
+        padding: $half-margin;
+        border: 1px solid $stroke_white-theme;
+        cursor: pointer;
+        transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+        &:first-child {
+          border-radius: 0 0 0 5px;
+        }
+        &:last-child {
+          border-radius: 0 0 5px 0;
+        }
+        &:hover {
+          color: $accent-color;
+        }
+        .h2 {
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+// DARCK THEME
+
+.darck__theme {
+  .note__del-wrapper {
+    background: $bg_transparent_black-theme;
+    .note-del-win {
+      background: $input_black-theme;
+      .note-del-win__footer {
+        .note-del-win__footer-botton {
+          border: 1px solid $stroke_black-theme;
+        }
+      }
+    }
+  }
+}
