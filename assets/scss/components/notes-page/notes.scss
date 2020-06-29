@@ -4,6 +4,7 @@
   width: 100%;
   display: flex;
   flex-flow: column wrap;
+  animation: bounceInUp 1s;
   &:before,
   &:after {
     content: '';
