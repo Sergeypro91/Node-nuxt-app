@@ -6,21 +6,14 @@
       </div>
       <div v-if="note" class="note__edit-body">
         <div class="input imput_without-icon hover">
-          <input
-            v-model="note.title"
-            type="text"
-            placeholder="Enter note title ..."
-          />
+          <input :value="note.title" type="text" @input="updateTitle" />
         </div>
         <div class="input imput_without-icon hover">
-          <textarea
-            v-model="note.description"
-            placeholder="Enter note description ..."
-          />
+          <textarea :value="note.description" @input="updateDescription" />
         </div>
       </div>
       <div class="note__edit-footer">
-        <div class="btn btn_primary hover">
+        <div class="btn btn_primary hover" @click="setUpdateNote">
           <div class="btn__icon">
             <svg
               class="icon icon_white"
@@ -61,8 +54,10 @@ export default {
   data() {
     return {
       showEditNote: false,
+      note: [],
       noteId: 0,
-      note: null
+      newNoteTitle: null,
+      newNoteDescription: null
     }
   },
 
@@ -75,6 +70,7 @@ export default {
   mounted() {
     this.$root.$on('showEdit', (id) => {
       this.showEditNote = true
+
       this.noteId = this.notes
         .map((x) => {
           return x.noteId
@@ -87,6 +83,36 @@ export default {
 
   methods: {
     closeEditNote() {
+      this.showEditNote = false
+    },
+
+    updateTitle(val) {
+      this.newNoteTitle = val.target.value
+    },
+
+    updateDescription(val) {
+      this.newNoteDescription = val.target.value
+    },
+
+    setUpdateNote() {
+      if (!this.newNoteTitle) {
+        this.newNoteTitle = this.notes[this.noteId].title
+      }
+
+      if (!this.newNoteDescription) {
+        this.newNoteDescription = this.notes[this.noteId].description
+      }
+
+      const updateNote = {
+        id: this.noteId,
+        title: this.newNoteTitle,
+        description: this.newNoteDescription,
+        publishTime: new Date(Date.now()).toLocaleString()
+      }
+
+      this.$store.commit('notes/updateNote', updateNote)
+      this.newNoteTitle = null
+      this.newNoteDescription = null
       this.showEditNote = false
     }
   }

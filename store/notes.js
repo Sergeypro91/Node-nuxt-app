@@ -103,6 +103,12 @@ export const mutations = {
   destroyNote(state, id) {
     const index = state.notes.findIndex((obj) => obj.noteId === id)
     state.notes.splice([index], 1)
+  },
+
+  updateNote(state, data) {
+    state.notes[data.id].title = data.title
+    state.notes[data.id].description = data.description
+    state.notes[data.id].publishTime = data.publishTime
   }
 }
 

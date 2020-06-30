@@ -3,7 +3,6 @@
   background: rgba($bg_white-theme, 0.8);
   backdrop-filter: blur(2px);
   transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
-  animation: bounceInDown 1s;
 }
 
 .new-note__headline {
